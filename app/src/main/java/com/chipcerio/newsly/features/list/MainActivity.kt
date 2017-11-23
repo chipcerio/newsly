@@ -9,11 +9,11 @@ import com.chipcerio.newsly.data.Article
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.recyclerView
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickListener {
 
     @Inject lateinit var viewModel: TopHeadlinesViewModel
 
@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         (application as App).appComponent().inject(this)
         setContentView(R.layout.activity_main)
-
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
@@ -42,6 +41,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setArticles(articles: MutableList<Article>) {
-        recyclerView.adapter = ArticlesAdapter(articles)
+        val adapter = ArticlesAdapter(articles, this)
+        recyclerView.adapter = adapter
+    }
+
+    override fun onArticleClick(article: Article) {
+        Timber.d("$article")
     }
 }

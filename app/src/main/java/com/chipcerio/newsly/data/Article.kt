@@ -20,5 +20,5 @@ data class Article (
         val urlToImage: String,
 
         val publishedAt: String
-)
 
+) { override fun toString(): String = title }

@@ -13,8 +13,4 @@ constructor(private val apiService: ApiService): TopHeadlinesSource {
 
     override fun getTopHeadlines(source: String): Observable<TopHeadlinesResponse> =
             apiService.getTopHeadlines(source)
-                    .doOnNext {
-                        it.articles.forEach { Timber.d("article: $it") }
-                    }
-
 }

@@ -4,13 +4,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.chipcerio.newsly.R
-import com.chipcerio.newsly.config.NewslyGlide
 import com.chipcerio.newsly.data.Article
 
-class ArticlesAdapter(private val articles: MutableList<Article>) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class ArticlesAdapter(private val articles: MutableList<Article>,
+                      listener: OnArticleClickListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+
+    private val onArticleClickListener = listener
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(articles[position])
@@ -22,18 +23,21 @@ class ArticlesAdapter(private val articles: MutableList<Article>) : RecyclerView
             ViewHolder(LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_article, parent, false))
 
+    interface OnArticleClickListener {
+        fun onArticleClick(article: Article)
+    }
+
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-        private var imageView = view.findViewById<ImageView>(R.id.imageView)
         private var titleView = view.findViewById<TextView>(R.id.titleView)
-        private var authorView = view.findViewById<TextView>(R.id.authorView)
+        private var descriptionView = view.findViewById<TextView>(R.id.descriptionView)
 
         fun bind(article: Article) {
-            NewslyGlide.with(view.context)
-                    .load(article.urlToImage)
-                    .into(imageView)
             titleView.text = article.title
-            authorView.text = article.author
+            descriptionView.text = article.description
+            view.setOnClickListener {
+                onArticleClickListener.onArticleClick(article)
+            }
         }
     }
 }
