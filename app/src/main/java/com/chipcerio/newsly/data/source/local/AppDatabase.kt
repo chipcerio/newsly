@@ -3,12 +3,12 @@ package com.chipcerio.newsly.data.source.local
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 import com.chipcerio.newsly.common.Constants.Database.VERSION
-import com.chipcerio.newsly.data.News
+import com.chipcerio.newsly.data.Article
 
-@Database(entities = arrayOf(News::class),
+@Database(entities = arrayOf(Article::class),
           version = VERSION,
           exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun newsDao(): NewsDao
+    abstract fun articlesDao(): ArticlesDao
 }
