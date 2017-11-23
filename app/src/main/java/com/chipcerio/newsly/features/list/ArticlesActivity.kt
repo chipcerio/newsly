@@ -1,11 +1,14 @@
 package com.chipcerio.newsly.features.list
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.chipcerio.newsly.App
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.data.Article
+import com.chipcerio.newsly.features.details.DetailsActivity
+import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ARTICLE
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -13,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.recyclerView
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickListener {
+class ArticlesActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickListener {
 
     @Inject lateinit var viewModel: TopHeadlinesViewModel
 
@@ -47,5 +50,8 @@ class MainActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickListener
 
     override fun onArticleClick(article: Article) {
         Timber.d("$article")
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra(EXTRA_ARTICLE, article)
+        startActivity(intent)
     }
 }

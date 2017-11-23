@@ -2,7 +2,10 @@ package com.chipcerio.newsly.data
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "articles")
 data class Article (
 
@@ -21,4 +24,4 @@ data class Article (
 
         val publishedAt: String
 
-) { override fun toString(): String = title }
+) : Parcelable { override fun toString(): String = title }
