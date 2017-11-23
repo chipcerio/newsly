@@ -28,6 +28,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="128dp"
                 android:layout_height="88dp"
+                android:scaleType="fitCenter"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <TextView
