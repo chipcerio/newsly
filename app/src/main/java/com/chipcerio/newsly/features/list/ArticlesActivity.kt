@@ -12,13 +12,16 @@ import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ART
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_main.recyclerView
 import timber.log.Timber
 import javax.inject.Inject
 
 class ArticlesActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickListener {
 
-    @Inject lateinit var viewModel: TopHeadlinesViewModel
+//    @Inject lateinit var viewModel: TopHeadlinesViewModel
+
+    @Inject lateinit var viewModel: EverythingViewModel
 
     private val disposables = CompositeDisposable()
 
@@ -29,9 +32,11 @@ class ArticlesActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickList
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
+    private val paginator = PublishSubject.create<Int>()
+
     override fun onStart() {
         super.onStart()
-        val d = viewModel.loadTopHeadlines("bbc-news")
+        val d = viewModel.loadArticles(arrayListOf("bbc-news", "abc-news"), 1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ setArticles(it) }, { Timber.e(it) })
@@ -43,15 +48,15 @@ class ArticlesActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickList
         disposables.clear()
     }
 
-    private fun setArticles(articles: MutableList<Article>) {
+    private fun setArticles(articles: List<Article>) {
         val adapter = ArticlesAdapter(articles, this)
         recyclerView.adapter = adapter
     }
 
     override fun onArticleClick(article: Article) {
         Timber.d("$article")
-        val intent = Intent(this, DetailsActivity::class.java)
-        intent.putExtra(EXTRA_ARTICLE, article)
-        startActivity(intent)
+//        val intent = Intent(this, DetailsActivity::class.java)
+//        intent.putExtra(EXTRA_ARTICLE, article)
+//        startActivity(intent)
     }
 }

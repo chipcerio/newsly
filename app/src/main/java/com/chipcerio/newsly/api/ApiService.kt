@@ -12,4 +12,10 @@ interface ApiService {
             @Query("sources") source: String
     ): Observable<TopHeadlinesResponse>
 
+    @GET("everything")
+    fun getEverything(
+            @Query("sources") sources: String,
+            @Query("page") page: Int
+    ): Observable<TopHeadlinesResponse>
+
 }

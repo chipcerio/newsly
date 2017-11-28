@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.data.Article
 
-class ArticlesAdapter(private val articles: MutableList<Article>,
+class ArticlesAdapter(private val articles: List<Article>,
                       listener: OnArticleClickListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     private val onArticleClickListener = listener

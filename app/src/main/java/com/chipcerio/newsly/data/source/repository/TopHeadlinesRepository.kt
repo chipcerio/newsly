@@ -17,7 +17,7 @@ constructor(@Remote private val remote: TopHeadlinesSource,
 
     private var cacheIsDirty = false
 
-    override fun getTopHeadlines(source: String): Observable<MutableList<Article>> {
+    override fun getTopHeadlines(source: String): Observable<List<Article>> {
         if (cachedArticles.isNotEmpty() && !cacheIsDirty) {
             return Observable.fromIterable(cachedArticles.values).toList().toObservable()
         }
@@ -36,7 +36,7 @@ constructor(@Remote private val remote: TopHeadlinesSource,
         }
     }
 
-    private fun getAndCacheLocalArticles(source: String): Observable<MutableList<Article>> {
+    private fun getAndCacheLocalArticles(source: String): Observable<List<Article>> {
         return local.getTopHeadlines(source)
                 .flatMap {
                     Observable.fromIterable(it).doOnNext {
@@ -45,7 +45,7 @@ constructor(@Remote private val remote: TopHeadlinesSource,
                 }
     }
 
-    private fun getAndSaveRemoteArticles(source: String): Observable<MutableList<Article>> {
+    private fun getAndSaveRemoteArticles(source: String): Observable<List<Article>> {
         return remote.getTopHeadlines(source)
                 .flatMap {
                     Observable.fromIterable(it).doOnNext {

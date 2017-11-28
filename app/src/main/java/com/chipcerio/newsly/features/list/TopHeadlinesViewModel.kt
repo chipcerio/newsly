@@ -9,6 +9,6 @@ import javax.inject.Inject
 class TopHeadlinesViewModel @Inject
 constructor(private val repository: TopHeadlinesRepository) {
 
-    fun loadTopHeadlines(source: String): Observable<MutableList<Article>> =
+    fun loadTopHeadlines(source: String): Observable<List<Article>> =
             repository.getTopHeadlines(source)
 }

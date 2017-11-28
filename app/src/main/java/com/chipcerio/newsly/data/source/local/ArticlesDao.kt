@@ -11,7 +11,7 @@ import io.reactivex.Maybe
 interface ArticlesDao {
 
     @Query("SELECT * FROM articles")
-    fun getArticles(): Maybe<MutableList<Article>>
+    fun getArticles(): Maybe<List<Article>>
 
     @Insert(onConflict = REPLACE)
     fun save(article: Article)

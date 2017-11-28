@@ -5,7 +5,7 @@ import com.chipcerio.newsly.data.Article
 
 class TopHeadlinesResponse (
         val status: String,
-        val articles: MutableList<Article>
+        val articles: List<Article>
 )
 
 class Source (

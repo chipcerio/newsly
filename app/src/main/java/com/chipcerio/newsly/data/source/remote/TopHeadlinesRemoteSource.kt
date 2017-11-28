@@ -10,7 +10,7 @@ import javax.inject.Inject
 class TopHeadlinesRemoteSource @Inject
 constructor(private val apiService: ApiService): TopHeadlinesSource {
 
-    override fun getTopHeadlines(source: String): Observable<MutableList<Article>> =
+    override fun getTopHeadlines(source: String): Observable<List<Article>> =
             apiService.getTopHeadlines(source)
                     .map { it.articles }
 
