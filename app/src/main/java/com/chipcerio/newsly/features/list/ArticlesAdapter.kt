@@ -8,13 +8,15 @@ import android.widget.TextView
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.data.Article
 
-class ArticlesAdapter(private val articles: List<Article>,
-                      listener: OnArticleClickListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
-
-    private val onArticleClickListener = listener
+class ArticlesAdapter(private val articles: MutableList<Article>,
+                      private val onArticleClickListener: OnArticleClickListener,
+                      private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(articles[position])
+        if (position == articles.lastIndex) {
+            onLoadItemsListener.onLoadMoreItems()
+        }
     }
 
     override fun getItemCount(): Int = articles.size
@@ -23,8 +25,17 @@ class ArticlesAdapter(private val articles: List<Article>,
             ViewHolder(LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_article, parent, false))
 
+    fun add(position: Int, article: Article) {
+        articles.add(article)
+        notifyItemChanged(position)
+    }
+
     interface OnArticleClickListener {
         fun onArticleClick(article: Article)
+    }
+
+    interface OnLoadMoreItemsListener {
+        fun onLoadMoreItems()
     }
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {

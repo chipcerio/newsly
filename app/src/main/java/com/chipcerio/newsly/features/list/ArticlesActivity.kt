@@ -13,15 +13,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.activity_main.recyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class ArticlesActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickListener {
-
-//    @Inject lateinit var viewModel: TopHeadlinesViewModel
+class ArticlesActivity : AppCompatActivity(),
+        ArticlesAdapter.OnArticleClickListener,
+        ArticlesAdapter.OnLoadMoreItemsListener {
 
     @Inject lateinit var viewModel: EverythingViewModel
+
+    private lateinit var adapter: ArticlesAdapter
 
     private val disposables = CompositeDisposable()
 
@@ -30,17 +32,29 @@ class ArticlesActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickList
         (application as App).appComponent().inject(this)
         setContentView(R.layout.activity_main)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        adapter = ArticlesAdapter(mutableListOf(), this, this)
+        recyclerView.adapter = adapter
     }
 
-    private val paginator = PublishSubject.create<Int>()
+    private val paginate = PublishSubject.create<Int>()
+
+    private var page = 1
 
     override fun onStart() {
         super.onStart()
-        val d = viewModel.loadArticles(arrayListOf("bbc-news", "abc-news"), 1)
-                .subscribeOn(Schedulers.io())
+        // https://stackoverflow.com/a/29594194/1076574
+        // https://stackoverflow.com/a/35554835/1076574
+        paginate.observeOn(Schedulers.io())
+                .concatMap {
+                    viewModel.loadArticles(arrayListOf("bbc-news", "abc-news"), it) }
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ setArticles(it) }, { Timber.e(it) })
-        disposables.add(d)
+                .subscribe({
+                    Timber.d("subscribe, thread: ${Thread.currentThread().id}")
+                    setArticles(it)
+                }, { Timber.e(it) })
+
+        paginate.onNext(page)
     }
 
     override fun onStop() {
@@ -49,14 +63,22 @@ class ArticlesActivity : AppCompatActivity(), ArticlesAdapter.OnArticleClickList
     }
 
     private fun setArticles(articles: List<Article>) {
-        val adapter = ArticlesAdapter(articles, this)
-        recyclerView.adapter = adapter
+        articles.forEach {
+            Timber.d(it.title)
+            adapter.add(articles.indexOf(it), it)
+        }
+        page += 1
     }
 
     override fun onArticleClick(article: Article) {
         Timber.d("$article")
-//        val intent = Intent(this, DetailsActivity::class.java)
-//        intent.putExtra(EXTRA_ARTICLE, article)
-//        startActivity(intent)
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra(EXTRA_ARTICLE, article)
+        startActivity(intent)
+    }
+
+    override fun onLoadMoreItems() {
+        Timber.d("onLoadMoreItems on page $page")
+        paginate.onNext(page)
     }
 }
