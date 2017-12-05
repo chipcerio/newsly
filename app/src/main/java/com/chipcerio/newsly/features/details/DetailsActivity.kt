@@ -25,6 +25,6 @@ class DetailsActivity : AppCompatActivity() {
         dateView.text = article.publishedAt
         NewslyGlide.with(this)
                 .load(article.urlToImage)
-                .into(imageView)
+                .into(thumbnailView)
     }
 }
