@@ -19,6 +19,10 @@ class DetailsActivity : AppCompatActivity() {
 
         val article = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
 
+        setSupportActionBar(toolbarView)
+        supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         titleView.text = article.title
         descriptionView.text = article.description
         authorView.text = article.author

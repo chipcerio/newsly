@@ -14,6 +14,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -31,6 +32,9 @@ class ArticlesActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         (application as App).appComponent().inject(this)
         setContentView(R.layout.activity_main)
+
+        toolbarView.title = getString(R.string.app_name)
+
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         adapter = ArticlesAdapter(mutableListOf(), this, this)
