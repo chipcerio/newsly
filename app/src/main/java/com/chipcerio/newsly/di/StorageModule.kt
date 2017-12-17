@@ -6,12 +6,11 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.chipcerio.newsly.common.Constants.Database
 import com.chipcerio.newsly.data.source.local.AppDatabase
-import com.chipcerio.newsly.features.list.ArticlesActivityComponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(subcomponents = [(ArticlesActivityComponent::class)])
+@Module
 class StorageModule {
 
     @Provides @Singleton

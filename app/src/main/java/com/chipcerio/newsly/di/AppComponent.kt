@@ -6,6 +6,8 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
+// https://medium.com/@iammert/new-android-injector-with-dagger-2-part-1-8baa60152abe
+// https://medium.com/@iammert/new-android-injector-with-dagger-2-part-2-4af05fd783d0
 @Singleton
 @Component(modules = [
     (AndroidInjectionModule::class),

@@ -4,7 +4,6 @@ import com.chipcerio.newsly.BuildConfig
 import com.chipcerio.newsly.api.ApiService
 import com.chipcerio.newsly.common.Constants.Api.API_VERSION
 import com.chipcerio.newsly.common.Constants.Api.BASE_URL
-import com.chipcerio.newsly.features.list.ArticlesActivityComponent
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -15,7 +14,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
-@Module(subcomponents = [(ArticlesActivityComponent::class)])
+@Module
 class NetworkModule {
 
     @Provides @Singleton
