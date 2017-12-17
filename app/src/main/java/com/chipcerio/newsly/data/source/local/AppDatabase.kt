@@ -5,7 +5,7 @@ import android.arch.persistence.room.RoomDatabase
 import com.chipcerio.newsly.common.Constants.Database.VERSION
 import com.chipcerio.newsly.data.Article
 
-@Database(entities = arrayOf(Article::class),
+@Database(entities = [(Article::class)],
           version = VERSION,
           exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {

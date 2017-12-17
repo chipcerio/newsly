@@ -4,11 +4,13 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import com.chipcerio.newsly.App
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.data.Article
 import com.chipcerio.newsly.features.details.DetailsActivity
 import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ARTICLE
+import com.chipcerio.newsly.features.list.ArticlesAdapter.OnArticleClickListener
+import com.chipcerio.newsly.features.list.ArticlesAdapter.OnLoadMoreItemsListener
+import dagger.android.AndroidInjection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -18,11 +20,9 @@ import kotlinx.android.synthetic.main.toolbar.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class ArticlesActivity : AppCompatActivity(),
-        ArticlesAdapter.OnArticleClickListener,
-        ArticlesAdapter.OnLoadMoreItemsListener {
+class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMoreItemsListener {
 
-    @Inject lateinit var viewModel: EverythingViewModel
+    @Inject lateinit var viewModel: ArticlesViewModel
 
     private lateinit var adapter: ArticlesAdapter
 
@@ -30,13 +30,12 @@ class ArticlesActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as App).appComponent().inject(this)
+        AndroidInjection.inject(this)
         setContentView(R.layout.activity_main)
 
         toolbarView.title = getString(R.string.app_name)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         adapter = ArticlesAdapter(mutableListOf(), this, this)
         recyclerView.adapter = adapter
     }

@@ -1,9 +1,10 @@
-package com.chipcerio.newsly.di.modules
+package com.chipcerio.newsly.di
 
 import com.chipcerio.newsly.BuildConfig
 import com.chipcerio.newsly.api.ApiService
 import com.chipcerio.newsly.common.Constants.Api.API_VERSION
 import com.chipcerio.newsly.common.Constants.Api.BASE_URL
+import com.chipcerio.newsly.features.list.ArticlesActivityComponent
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -14,11 +15,10 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
-@Module
+@Module(subcomponents = [(ArticlesActivityComponent::class)])
 class NetworkModule {
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     fun providesOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.NONE
@@ -34,8 +34,7 @@ class NetworkModule {
                 .build()
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     fun providesMoshi(): Moshi = Moshi.Builder().build()
 
     @Provides
@@ -49,8 +48,7 @@ class NetworkModule {
                 .build()
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     fun providesApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
 }

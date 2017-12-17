@@ -4,7 +4,7 @@ import com.chipcerio.newsly.data.Article
 import io.reactivex.Observable
 
 
-interface EverythingSource {
+interface ArticleSource {
 
     fun getArticles(sources: List<String>, page: Int): Observable<List<Article>>
 
