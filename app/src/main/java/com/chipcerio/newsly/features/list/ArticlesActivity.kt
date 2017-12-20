@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.chipcerio.newsly.R
+import com.chipcerio.newsly.common.ext.toast
 import com.chipcerio.newsly.data.Article
 import com.chipcerio.newsly.features.details.DetailsActivity
 import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ARTICLE
@@ -26,7 +27,11 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
 
     private lateinit var adapter: ArticlesAdapter
 
-    private val disposables = CompositeDisposable()
+    private lateinit var disposables: CompositeDisposable
+
+    private val paginate = PublishSubject.create<Int>()
+
+    private var page = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,29 +45,39 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
         recyclerView.adapter = adapter
     }
 
-    private val paginate = PublishSubject.create<Int>()
-
-    private var page = 1
-
     override fun onStart() {
         super.onStart()
+        bindViewModel()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        disposables.clear()
+    }
+
+    private fun bindViewModel() {
+        disposables = CompositeDisposable()
         // https://stackoverflow.com/a/29594194/1076574
         // https://stackoverflow.com/a/35554835/1076574
-        paginate.observeOn(Schedulers.io())
+        disposables.add(paginate.observeOn(Schedulers.io())
                 .concatMap {
                     viewModel.loadArticles(arrayListOf("bbc-news", "abc-news"), it) }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     Timber.d("subscribe, thread: ${Thread.currentThread().id}")
                     setArticles(it)
-                }, { Timber.e(it) })
+                }, { Timber.e(it) }))
 
         paginate.onNext(page)
+
+        disposables.add(viewModel.getLoadingIndicator()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ showLoadingIndicator(it) }))
     }
 
-    override fun onStop() {
-        super.onStop()
-        disposables.clear()
+    private fun showLoadingIndicator(showing: Boolean) {
+        if (showing) toast("Fetching articles...")
     }
 
     private fun setArticles(articles: List<Article>) {
