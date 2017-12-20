@@ -43,6 +43,23 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ArticlesAdapter(mutableListOf(), this, this)
         recyclerView.adapter = adapter
+
+        disposables = CompositeDisposable()
+
+        // https://stackoverflow.com/a/29594194/1076574
+        // https://stackoverflow.com/a/35554835/1076574
+        disposables.add(paginate.observeOn(Schedulers.io())
+                .concatMap {
+                    viewModel.loadArticles(arrayListOf("bbc-news", "abc-news"), it) }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    Timber.d("subscribe, thread: ${Thread.currentThread().id}")
+                    setArticles(it)
+                }, { Timber.e(it) }))
+
+        // putting in onCreate to prevent unwanted
+        // network calls when switching activities
+        paginate.onNext(page)
     }
 
     override fun onStart() {
@@ -56,20 +73,6 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
     }
 
     private fun bindViewModel() {
-        disposables = CompositeDisposable()
-        // https://stackoverflow.com/a/29594194/1076574
-        // https://stackoverflow.com/a/35554835/1076574
-        disposables.add(paginate.observeOn(Schedulers.io())
-                .concatMap {
-                    viewModel.loadArticles(arrayListOf("bbc-news", "abc-news"), it) }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    Timber.d("subscribe, thread: ${Thread.currentThread().id}")
-                    setArticles(it)
-                }, { Timber.e(it) }))
-
-        paginate.onNext(page)
-
         disposables.add(viewModel.getLoadingIndicator()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

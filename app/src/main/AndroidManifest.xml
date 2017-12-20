@@ -19,8 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".features.details.DetailsActivity"
-            android:theme="@style/NewslyTheme"/>
+        <activity android:name=".features.details.DetailsActivity"/>
     </application>
 
 </manifest>

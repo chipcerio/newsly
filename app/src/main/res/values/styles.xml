@@ -16,8 +16,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="NewslyTheme.Transparent" parent="NewslyTheme">
+    <style name="Transparent" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:windowActionBarOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
 </resources>

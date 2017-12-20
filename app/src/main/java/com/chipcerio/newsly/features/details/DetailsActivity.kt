@@ -5,7 +5,12 @@ import android.os.Bundle
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.config.NewslyGlide
 import com.chipcerio.newsly.data.Article
-import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.activity_details.upNavigationView
+import kotlinx.android.synthetic.main.activity_details.titleView
+import kotlinx.android.synthetic.main.activity_details.descriptionView
+import kotlinx.android.synthetic.main.activity_details.authorView
+import kotlinx.android.synthetic.main.activity_details.dateView
+import kotlinx.android.synthetic.main.activity_details.thumbnailView
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -19,9 +24,7 @@ class DetailsActivity : AppCompatActivity() {
 
         val article = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
 
-        setSupportActionBar(toolbarView)
-        supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        upNavigationView.setOnClickListener { finish() }
 
         titleView.text = article.title
         descriptionView.text = article.description
