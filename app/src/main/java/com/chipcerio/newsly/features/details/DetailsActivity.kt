@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_details.descriptionView
 import kotlinx.android.synthetic.main.activity_details.authorView
 import kotlinx.android.synthetic.main.activity_details.dateView
 import kotlinx.android.synthetic.main.activity_details.thumbnailView
+import kotlinx.android.synthetic.main.activity_details.shareView
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -33,5 +34,7 @@ class DetailsActivity : AppCompatActivity() {
         NewslyGlide.with(this)
                 .load(article.urlToImage)
                 .into(thumbnailView)
+
+        shareView.setOnClickListener {  }
     }
 }
