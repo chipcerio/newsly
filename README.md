@@ -47,6 +47,8 @@ NewsApiKey=<insert>
 
  * surviving orientation change
  * more unit test cases
+ * add more news sources
+ * add retry mechanism
 
 ### Contributions
 

@@ -50,7 +50,7 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
         // https://stackoverflow.com/a/35554835/1076574
         disposables.add(paginate.observeOn(Schedulers.io())
                 .concatMap {
-                    viewModel.loadArticles(arrayListOf("bbc-news", "abc-news"), it) }
+                    viewModel.loadArticles(arrayListOf("bbc-news", "bloomberg"), it) }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     Timber.d("subscribe, thread: ${Thread.currentThread().id}")

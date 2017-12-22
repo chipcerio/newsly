@@ -12,7 +12,7 @@ data class Article (
         @PrimaryKey(autoGenerate = true)
         val id: Long,
 
-        val author: String,
+        val author: String?,
 
         val title: String,
 
@@ -20,7 +20,7 @@ data class Article (
 
         val url: String,
 
-        val urlToImage: String,
+        val urlToImage: String?,
 
         val publishedAt: String
 

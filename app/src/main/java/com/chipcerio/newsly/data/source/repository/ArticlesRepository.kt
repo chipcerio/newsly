@@ -44,12 +44,14 @@ constructor(@Remote private val remote: ArticleSource,
         return remote.getArticles(sources, page)
                 .flatMap {
                     Observable.fromIterable(it).doOnNext {
-                        local.save(it)
-                        cachedArticles.put(it.id, it)
+                        save(it)
                     }.toList().toObservable()
                 }
                 .doOnComplete { cacheIsDirty = false }
     }
 
-    override fun save(article: Article) {}
+    override fun save(article: Article) {
+        local.save(article)
+        cachedArticles.put(article.id, article)
+    }
 }

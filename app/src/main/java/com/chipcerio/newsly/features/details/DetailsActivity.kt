@@ -30,7 +30,7 @@ class DetailsActivity : AppCompatActivity() {
 
         titleView.text = article.title
         descriptionView.text = article.description
-        authorView.text = article.author
+        article.author?.let { authorView.text = it }
         dateView.text = article.publishedAt.toDisplayableDateTime()
         NewslyGlide.with(this)
                 .load(article.urlToImage)
