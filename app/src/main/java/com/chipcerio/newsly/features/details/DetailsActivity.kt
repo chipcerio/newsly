@@ -3,6 +3,7 @@ package com.chipcerio.newsly.features.details
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.chipcerio.newsly.R
+import com.chipcerio.newsly.common.ext.toDisplayableDateTime
 import com.chipcerio.newsly.config.NewslyGlide
 import com.chipcerio.newsly.data.Article
 import kotlinx.android.synthetic.main.activity_details.upNavigationView
@@ -30,7 +31,7 @@ class DetailsActivity : AppCompatActivity() {
         titleView.text = article.title
         descriptionView.text = article.description
         authorView.text = article.author
-        dateView.text = article.publishedAt
+        dateView.text = article.publishedAt.toDisplayableDateTime()
         NewslyGlide.with(this)
                 .load(article.urlToImage)
                 .into(thumbnailView)
