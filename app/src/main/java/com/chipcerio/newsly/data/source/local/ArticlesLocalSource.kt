@@ -16,5 +16,4 @@ constructor(private val db: AppDatabase) : ArticleSource {
         db.articlesDao().save(article)
     }
 
-
 }
