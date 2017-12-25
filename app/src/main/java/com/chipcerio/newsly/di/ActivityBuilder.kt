@@ -12,5 +12,4 @@ abstract class ActivityBuilder {
     abstract fun bindArticlesActivity(): ArticlesActivity
 
     // add all activities here
-
 }

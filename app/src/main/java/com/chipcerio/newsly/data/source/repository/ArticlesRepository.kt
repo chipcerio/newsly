@@ -7,10 +7,9 @@ import com.chipcerio.newsly.di.scopes.Remote
 import io.reactivex.Observable
 import javax.inject.Inject
 
-
 class ArticlesRepository @Inject
 constructor(@Remote private val remote: ArticleSource,
-            @Local  private val  local: ArticleSource) : ArticleSource {
+    @Local private val local: ArticleSource) : ArticleSource {
 
     private var cachedArticles: MutableMap<Long, Article> = LinkedHashMap()
     private var cacheIsDirty = false
@@ -25,29 +24,29 @@ constructor(@Remote private val remote: ArticleSource,
         return if (cacheIsDirty) remoteArticles else {
             val localArticles = getAndCacheLocalArticles(sources, page)
             Observable.concat(localArticles, remoteArticles)
-                    .filter { it.isNotEmpty() }
-                    .firstOrError()
-                    .toObservable()
+                .filter { it.isNotEmpty() }
+                .firstOrError()
+                .toObservable()
         }
     }
 
     private fun getAndCacheLocalArticles(sources: List<String>, page: Int): Observable<List<Article>> {
         return local.getArticles(sources, page)
-                .flatMap {
-                    Observable.fromIterable(it).doOnNext {
-                        cachedArticles.put(it.id, it)
-                    }.toList().toObservable()
-                }
+            .flatMap {
+                Observable.fromIterable(it).doOnNext {
+                    cachedArticles.put(it.id, it)
+                }.toList().toObservable()
+            }
     }
 
     private fun getAndSaveRemoteArticles(sources: List<String>, page: Int): Observable<List<Article>> {
         return remote.getArticles(sources, page)
-                .flatMap {
-                    Observable.fromIterable(it).doOnNext {
-                        save(it)
-                    }.toList().toObservable()
-                }
-                .doOnComplete { cacheIsDirty = false }
+            .flatMap {
+                Observable.fromIterable(it).doOnNext {
+                    save(it)
+                }.toList().toObservable()
+            }
+            .doOnComplete { cacheIsDirty = false }
     }
 
     override fun save(article: Article) {

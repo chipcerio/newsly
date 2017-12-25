@@ -49,13 +49,14 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
         // https://stackoverflow.com/a/29594194/1076574
         // https://stackoverflow.com/a/35554835/1076574
         disposables.add(paginate.observeOn(Schedulers.io())
-                .concatMap {
-                    viewModel.loadArticles(arrayListOf("bbc-news", "bloomberg"), it) }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    Timber.d("subscribe, thread: ${Thread.currentThread().id}")
-                    setArticles(it)
-                }, { Timber.e(it) }))
+            .concatMap {
+                viewModel.loadArticles(arrayListOf("bbc-news", "bloomberg"), it)
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                Timber.d("subscribe, thread: ${Thread.currentThread().id}")
+                setArticles(it)
+            }, { Timber.e(it) }))
 
         // putting in onCreate to prevent unwanted
         // network calls when switching activities
@@ -74,9 +75,9 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
 
     private fun bindViewModel() {
         disposables.add(viewModel.getLoadingIndicator()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ showLoadingIndicator(it) }))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ showLoadingIndicator(it) }))
     }
 
     private fun showLoadingIndicator(showing: Boolean) {

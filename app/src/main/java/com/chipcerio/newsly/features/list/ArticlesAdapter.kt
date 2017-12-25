@@ -1,19 +1,21 @@
 package com.chipcerio.newsly.features.list
 
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.chipcerio.newsly.R
-import com.chipcerio.newsly.config.NewslyGlide
+import com.chipcerio.newsly.common.ext.loadFromUrl
 import com.chipcerio.newsly.data.Article
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_article.titleView
+import kotlinx.android.synthetic.main.item_article.descriptionView
+import kotlinx.android.synthetic.main.item_article.fullStoryView
+import kotlinx.android.synthetic.main.item_article.thumbnailView
 
 class ArticlesAdapter(private val articles: MutableList<Article>,
-                      private val onArticleClickListener: OnArticleClickListener,
-                      private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+    private val onArticleClickListener: OnArticleClickListener,
+    private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(articles[position])
@@ -25,8 +27,8 @@ class ArticlesAdapter(private val articles: MutableList<Article>,
     override fun getItemCount(): Int = articles.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-            ViewHolder(LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_article, parent, false))
+        ViewHolder(LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_article, parent, false))
 
     fun add(position: Int, article: Article) {
         articles.add(article)
@@ -41,12 +43,7 @@ class ArticlesAdapter(private val articles: MutableList<Article>,
         fun onLoadMoreItems()
     }
 
-    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-
-        private var thumbnailView = view.findViewById<ImageView>(R.id.thumbnailView)
-        private var titleView = view.findViewById<TextView>(R.id.titleView)
-        private var descriptionView = view.findViewById<TextView>(R.id.descriptionView)
-        private var fullStoryView = view.findViewById<TextView>(R.id.fullStoryView)
+    inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bind(article: Article) {
             titleView.text = article.title
@@ -55,10 +52,7 @@ class ArticlesAdapter(private val articles: MutableList<Article>,
                 onArticleClickListener.onArticleClick(article)
             }
 
-            NewslyGlide.with(view.context)
-                    .load(article.urlToImage)
-                    .fallback(ContextCompat.getDrawable(view.context, R.drawable.ic_launcher_background))
-                    .into(thumbnailView)
+            article.urlToImage?.let { thumbnailView.loadFromUrl(it) }
         }
     }
 }

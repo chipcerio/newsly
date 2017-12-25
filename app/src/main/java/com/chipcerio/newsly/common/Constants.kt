@@ -1,6 +1,5 @@
 package com.chipcerio.newsly.common
 
-
 object Constants {
 
     object Api {

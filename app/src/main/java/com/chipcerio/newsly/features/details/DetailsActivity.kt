@@ -1,18 +1,12 @@
 package com.chipcerio.newsly.features.details
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.chipcerio.newsly.R
+import com.chipcerio.newsly.common.ext.loadFromUrl
 import com.chipcerio.newsly.common.ext.toDisplayableDateTime
-import com.chipcerio.newsly.config.NewslyGlide
 import com.chipcerio.newsly.data.Article
-import kotlinx.android.synthetic.main.activity_details.upNavigationView
-import kotlinx.android.synthetic.main.activity_details.titleView
-import kotlinx.android.synthetic.main.activity_details.descriptionView
-import kotlinx.android.synthetic.main.activity_details.authorView
-import kotlinx.android.synthetic.main.activity_details.dateView
-import kotlinx.android.synthetic.main.activity_details.thumbnailView
-import kotlinx.android.synthetic.main.activity_details.shareView
+import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -32,10 +26,8 @@ class DetailsActivity : AppCompatActivity() {
         descriptionView.text = article.description
         article.author?.let { authorView.text = it }
         dateView.text = article.publishedAt.toDisplayableDateTime()
-        NewslyGlide.with(this)
-                .load(article.urlToImage)
-                .into(thumbnailView)
+        article.urlToImage?.let { thumbnailView.loadFromUrl(it) }
 
-        shareView.setOnClickListener {  }
+        shareView.setOnClickListener { }
     }
 }

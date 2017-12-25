@@ -20,14 +20,13 @@ class App : Application(), HasActivityInjector {
         super.onCreate()
 
         DaggerAppComponent
-                .builder()
-                .application(this)
-                .build()
-                .inject(this)
+            .builder()
+            .application(this)
+            .build()
+            .inject(this)
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
 
         AndroidThreeTen.init(this)
     }
-
 }

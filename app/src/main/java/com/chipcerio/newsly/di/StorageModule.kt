@@ -13,12 +13,13 @@ import javax.inject.Singleton
 @Module
 class StorageModule {
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     fun providesSharedPreferences(context: Context): SharedPreferences =
-            PreferenceManager.getDefaultSharedPreferences(context)
+        PreferenceManager.getDefaultSharedPreferences(context)
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     fun providesAppDatabase(context: Context): AppDatabase =
-            Room.databaseBuilder(context, AppDatabase::class.java, Database.NAME).build()
-
+        Room.databaseBuilder(context, AppDatabase::class.java, Database.NAME).build()
 }

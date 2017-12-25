@@ -7,21 +7,23 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity(tableName = "articles")
-data class Article (
+data class Article(
 
-        @PrimaryKey(autoGenerate = true)
-        val id: Long,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long,
 
-        val author: String?,
+    val author: String?,
 
-        val title: String,
+    val title: String,
 
-        val description: String,
+    val description: String,
 
-        val url: String,
+    val url: String,
 
-        val urlToImage: String?,
+    val urlToImage: String?,
 
-        val publishedAt: String
+    val publishedAt: String
 
-) : Parcelable { override fun toString(): String = title }
+) : Parcelable {
+    override fun toString(): String = title
+}

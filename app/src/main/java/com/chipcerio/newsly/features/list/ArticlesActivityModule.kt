@@ -13,14 +13,15 @@ import dagger.Provides
 @Module
 class ArticlesActivityModule {
 
-    @Provides @Remote
+    @Provides
+    @Remote
     fun providesArticlesRemoteSource(apiService: ApiService): ArticleSource {
         return ArticlesRemoteSource(apiService)
     }
 
-    @Provides @Local
+    @Provides
+    @Local
     fun providesArticlesLocalSource(db: AppDatabase): ArticleSource {
         return ArticlesLocalSource(db)
     }
-
 }

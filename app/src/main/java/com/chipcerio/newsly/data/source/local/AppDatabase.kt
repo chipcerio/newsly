@@ -6,8 +6,8 @@ import com.chipcerio.newsly.common.Constants.Database.VERSION
 import com.chipcerio.newsly.data.Article
 
 @Database(entities = [(Article::class)],
-          version = VERSION,
-          exportSchema = true)
+    version = VERSION,
+    exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun articlesDao(): ArticlesDao

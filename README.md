@@ -1,16 +1,14 @@
-# Newsly 📰
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
+# Newsly 📰
 Newsly is a **work-in-progress** news tracking Android app, that connects the sources to
 [News API](https://newsapi.org/). It is still in development stage.
 
-The app contains a Master/Detail flow type UI and uses RxJava heavily. Added a layer on top of data layer to separate the logic that retrieves the data and maps it to the entity model from the business logic that acts on the model.
-
-It also works offline and has a pagination to fetch more articles.
+The app contains a Master/Detail flow type UI and uses RxJava heavily.  Added a layer on top of data layer to separate the logic that retrieves the data and maps it to the entity model from the business logic that acts on the model.
 
 Also, themeing isn't applied to the app
 
 ### Android development
-
 Newsly uses the latest cutting edge libraries, tools, and patterns. As a summary:
 
  * app is written entirely in [Kotlin](https://kotlinlang.org/)
@@ -24,16 +22,13 @@ Newsly uses the latest cutting edge libraries, tools, and patterns. As a summary
  * uses [Mockito](http://site.mockito.org/) for unit testing
 
 ### Motivation
-
 To keep myself updated to any libraries, tools, or patterns that can be applied to an android app
 
 ### Development setup
-
 Requires the latest Android Studio 3.0 (or newer) to be able to build the app.
 
 ### API keys
-
-You need to register at [News API](https://newsapi.org/) and get an API key
+You need to register at [News API] and get an API key
 
 When you obtain the API key, you can add it to the app by putting the following in the
 `apikeys.properties` file at the root of the project:
@@ -43,15 +38,16 @@ When you obtain the API key, you can add it to the app by putting the following 
 NewsApiKey=<insert>
 ```
 
-### TODO
+### Code Style
+This project follows the **official code style** from [kotlinlang.org](https://kotlinlang.org/docs/reference/coding-conventions.html) and [Android Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html). It uses [ktlint](https://ktlint.github.io/) for Kotlin linter
 
+### TODO
  * surviving orientation change
  * more unit test cases
  * add more news sources
  * add retry mechanism
 
 ### Contributions
-
 If you've found an error, you may file an issue.
 
 Patches are encouraged, and may be submitted by forking this project and

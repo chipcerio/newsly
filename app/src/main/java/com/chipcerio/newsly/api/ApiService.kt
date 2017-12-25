@@ -9,13 +9,12 @@ interface ApiService {
 
     @GET("top-headlines")
     fun getTopHeadlines(
-            @Query("sources") source: String
+        @Query("sources") source: String
     ): Observable<TopHeadlinesResponse>
 
     @GET("everything")
     fun getEverything(
-            @Query("sources") sources: String,
-            @Query("page") page: Int
+        @Query("sources") sources: String,
+        @Query("page") page: Int
     ): Observable<TopHeadlinesResponse>
-
 }
