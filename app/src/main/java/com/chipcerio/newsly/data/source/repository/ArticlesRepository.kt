@@ -15,19 +15,20 @@ constructor(@Remote private val remote: ArticleSource,
     private var cacheIsDirty = false
 
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
-        if (cachedArticles.isNotEmpty() and !cacheIsDirty) {
-            return Observable.fromIterable(cachedArticles.values).toList().toObservable()
-        }
-
-        val remoteArticles = getAndSaveRemoteArticles(sources, page)
-
-        return if (cacheIsDirty) remoteArticles else {
-            val localArticles = getAndCacheLocalArticles(sources, page)
-            Observable.concat(localArticles, remoteArticles)
-                .filter { it.isNotEmpty() }
-                .firstOrError()
-                .toObservable()
-        }
+        return remote.getArticles(sources, page)
+//        if (cachedArticles.isNotEmpty() and !cacheIsDirty) {
+//            return Observable.fromIterable(cachedArticles.values).toList().toObservable()
+//        }
+//
+//        val remoteArticles = getAndSaveRemoteArticles(sources, page)
+//
+//        return if (cacheIsDirty) remoteArticles else {
+//            val localArticles = getAndCacheLocalArticles(sources, page)
+//            Observable.concat(localArticles, remoteArticles)
+//                .filter { it.isNotEmpty() }
+//                .firstOrError()
+//                .toObservable()
+//        }
     }
 
     private fun getAndCacheLocalArticles(sources: List<String>, page: Int): Observable<List<Article>> {

@@ -2,8 +2,8 @@ package com.chipcerio.newsly.di
 
 import com.chipcerio.newsly.BuildConfig
 import com.chipcerio.newsly.api.ApiService
-import com.chipcerio.newsly.common.Constants.Api.API_VERSION
-import com.chipcerio.newsly.common.Constants.Api.BASE_URL
+import com.chipcerio.newsly.api.ApiService.Api.VERSION
+import com.chipcerio.newsly.api.ApiService.Api.BASE_URL
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -42,7 +42,7 @@ class NetworkModule {
     @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("$BASE_URL$API_VERSION")
+            .baseUrl("$BASE_URL$VERSION")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)

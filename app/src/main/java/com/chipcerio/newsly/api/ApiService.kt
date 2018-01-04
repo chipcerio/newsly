@@ -7,6 +7,11 @@ import retrofit2.http.Query
 
 interface ApiService {
 
+    object Api {
+        val BASE_URL = "https://newsapi.org/"
+        val VERSION = "v2/"
+    }
+
     @GET("top-headlines")
     fun getTopHeadlines(
         @Query("sources") source: String
@@ -16,5 +21,5 @@ interface ApiService {
     fun getEverything(
         @Query("sources") sources: String,
         @Query("page") page: Int
-    ): Observable<TopHeadlinesResponse>
+    ): Observable<ArticlesResponse>
 }

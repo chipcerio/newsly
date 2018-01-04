@@ -23,7 +23,7 @@ class DetailsActivity : AppCompatActivity() {
         upNavigationView.setOnClickListener { finish() }
 
         titleView.text = article.title
-        descriptionView.text = article.description
+        sourceView.text = article.description
         article.author?.let { authorView.text = it }
         dateView.text = article.publishedAt.toDisplayableDateTime()
         article.urlToImage?.let { thumbnailView.loadFromUrl(it) }

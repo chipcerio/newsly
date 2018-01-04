@@ -10,7 +10,8 @@ class ArticlesRemoteSource @Inject
 constructor(private val apiService: ApiService) : ArticleSource {
 
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
-        return apiService.getEverything(sources.joinToString(separator = ","), page)
+        return apiService
+            .getEverything(sources.joinToString(separator = ","), page)
             .map { it.articles }
     }
 

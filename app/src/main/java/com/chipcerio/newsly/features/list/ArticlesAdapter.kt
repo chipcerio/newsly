@@ -8,10 +8,7 @@ import com.chipcerio.newsly.R
 import com.chipcerio.newsly.common.ext.loadFromUrl
 import com.chipcerio.newsly.data.Article
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_article.titleView
-import kotlinx.android.synthetic.main.item_article.descriptionView
-import kotlinx.android.synthetic.main.item_article.fullStoryView
-import kotlinx.android.synthetic.main.item_article.thumbnailView
+import kotlinx.android.synthetic.main.item_article.*
 
 class ArticlesAdapter(private val articles: MutableList<Article>,
     private val onArticleClickListener: OnArticleClickListener,
@@ -47,12 +44,11 @@ class ArticlesAdapter(private val articles: MutableList<Article>,
 
         fun bind(article: Article) {
             titleView.text = article.title
-            descriptionView.text = article.description
-            fullStoryView.setOnClickListener {
+            sourceView.text = article.author
+            article.urlToImage?.let { thumbnailView.loadFromUrl(it) }
+            containerView.setOnClickListener {
                 onArticleClickListener.onArticleClick(article)
             }
-
-            article.urlToImage?.let { thumbnailView.loadFromUrl(it) }
         }
     }
 }

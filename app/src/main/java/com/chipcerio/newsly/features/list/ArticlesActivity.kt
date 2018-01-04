@@ -1,7 +1,6 @@
 package com.chipcerio.newsly.features.list
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.chipcerio.newsly.R
@@ -11,7 +10,7 @@ import com.chipcerio.newsly.features.details.DetailsActivity
 import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ARTICLE
 import com.chipcerio.newsly.features.list.ArticlesAdapter.OnArticleClickListener
 import com.chipcerio.newsly.features.list.ArticlesAdapter.OnLoadMoreItemsListener
-import dagger.android.AndroidInjection
+import dagger.android.DaggerActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMoreItemsListener {
+class ArticlesActivity : DaggerActivity(), OnArticleClickListener, OnLoadMoreItemsListener {
 
     @Inject lateinit var viewModel: ArticlesViewModel
 
@@ -35,7 +34,6 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AndroidInjection.inject(this)
         setContentView(R.layout.activity_main)
 
         toolbarView.title = getString(R.string.app_name)
@@ -93,14 +91,10 @@ class ArticlesActivity : AppCompatActivity(), OnArticleClickListener, OnLoadMore
     }
 
     override fun onArticleClick(article: Article) {
-        Timber.d("$article")
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(EXTRA_ARTICLE, article)
         startActivity(intent)
     }
 
-    override fun onLoadMoreItems() {
-        Timber.d("onLoadMoreItems on page $page")
-        paginate.onNext(page)
-    }
+    override fun onLoadMoreItems() = paginate.onNext(page)
 }
