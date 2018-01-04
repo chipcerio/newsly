@@ -14,6 +14,8 @@ data class Article(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
 
+//    val source: Source,
+
     val author: String?,
 
     val title: String,
