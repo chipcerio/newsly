@@ -44,7 +44,7 @@ class ArticlesAdapter(private val articles: MutableList<Article>,
 
         fun bind(article: Article) {
             titleView.text = article.title
-            sourceView.text = article.author
+            sourceView.text = "BBC News"
             article.urlToImage?.let { thumbnailView.loadFromUrl(it) }
             containerView.setOnClickListener {
                 onArticleClickListener.onArticleClick(article)

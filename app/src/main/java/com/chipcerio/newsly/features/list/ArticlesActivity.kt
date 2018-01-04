@@ -51,10 +51,7 @@ class ArticlesActivity : DaggerActivity(), OnArticleClickListener, OnLoadMoreIte
                 viewModel.loadArticles(arrayListOf("bbc-news", "bloomberg"), it)
             }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                Timber.d("subscribe, thread: ${Thread.currentThread().id}")
-                setArticles(it)
-            }, { Timber.e(it) }))
+            .subscribe({ setArticles(it) }, { Timber.e(it) }))
 
         // putting in onCreate to prevent unwanted
         // network calls when switching activities
@@ -63,7 +60,7 @@ class ArticlesActivity : DaggerActivity(), OnArticleClickListener, OnLoadMoreIte
 
     override fun onStart() {
         super.onStart()
-        bindViewModel()
+        bindLoadingState()
     }
 
     override fun onStop() {
@@ -71,7 +68,7 @@ class ArticlesActivity : DaggerActivity(), OnArticleClickListener, OnLoadMoreIte
         disposables.clear()
     }
 
-    private fun bindViewModel() {
+    private fun bindLoadingState() {
         disposables.add(viewModel.getLoadingIndicator()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
