@@ -8,7 +8,7 @@ import com.chipcerio.newsly.data.Source
 
 @Database(entities = [(Article::class), (Source::class)],
     version = VERSION,
-    exportSchema = true)
+    exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun articlesDao(): ArticlesDao
