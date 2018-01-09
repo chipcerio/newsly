@@ -16,8 +16,7 @@ import kotlinx.android.parcel.Parcelize
         entity = Source::class,
         parentColumns = ["id"],
         childColumns = ["sourceId"],
-        onDelete = CASCADE
-    ))] )
+        onDelete = CASCADE))])
 data class Article (
 
     @PrimaryKey(autoGenerate = true)

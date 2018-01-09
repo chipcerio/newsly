@@ -9,8 +9,7 @@ import kotlinx.android.parcel.Parcelize
 
 // https://android.jlelse.eu/android-architecture-components-room-relationships-bf473510c14a
 @Parcelize @SuppressLint("ParcelCreator")
-@Entity(tableName = Table.SOURCES
-    /*primaryKeys = ["id"]*/)
+@Entity(tableName = Table.SOURCES)
 data class Source (
 
     @PrimaryKey
