@@ -12,6 +12,11 @@ androidExtensions {
     experimental = true
 }
 
+// https://blog.jetbrains.com/kotlin/2018/01/kotlin-1-2-20-is-out/
+kapt {
+    useBuildCache = true
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -43,10 +48,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
-
-kapt {
-    generateStubs = true
 }
 
 dependencies {
@@ -96,5 +97,4 @@ dependencies {
     // utilities
     implementation "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
     implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.ext.threeTenAbpVersion"
-
 }
