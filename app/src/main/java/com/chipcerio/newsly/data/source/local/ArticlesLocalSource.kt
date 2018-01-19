@@ -16,9 +16,17 @@ constructor(private val db: AppDatabase) : ArticleSource {
     // https://groups.google.com/forum/#!msg/realm-java/6hFqdyoH67w/232lFPuc0eYJ
     private val id = AtomicInteger()
 
+    /*
+    SELECT * FROM articles
+    WHERE sourceId IN ('bloomberg','bbc-news')
+     */
+
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
+
+//        sources.joinToString(",", "\'", "\'")
+
         // "bbc-news,bloomberg", 4
-        return db.articlesDao().getArticlesByPage(sources, page).toObservable()
+        return db.articlesDao().getArticles(/*sources, page*/).toObservable()
             .flatMapIterable { it }
             .map {
                 val sourceModel = db.sourcesDao().getSource(it.sourceId).blockingGet()

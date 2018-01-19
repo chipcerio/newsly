@@ -20,8 +20,13 @@ interface ArticlesDao {
      * ORDER BY publishedAt
      * LIMIT 20
      */
-    @Query("")
-    fun getArticlesByPage(sources: List<String>, page: Int): Maybe<List<ArticleModel>>
+
+    /*
+    SELECT * FROM articles
+    WHERE sourceId IN ('bloomberg','bbc-news')
+     */
+//    @Query("")
+//    fun getArticlesByPage(sources: List<String>, page: Int): Maybe<List<ArticleModel>>
 
     @Insert(onConflict = REPLACE)
     fun save(article: ArticleModel)

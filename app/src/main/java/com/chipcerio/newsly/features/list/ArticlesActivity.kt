@@ -10,7 +10,7 @@ import com.chipcerio.newsly.features.details.DetailsActivity
 import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ARTICLE
 import com.chipcerio.newsly.features.list.ArticlesAdapter.OnArticleClickListener
 import com.chipcerio.newsly.features.list.ArticlesAdapter.OnLoadMoreItemsListener
-import dagger.android.DaggerActivity
+import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -20,9 +20,10 @@ import kotlinx.android.synthetic.main.toolbar.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class ArticlesActivity : DaggerActivity(), OnArticleClickListener, OnLoadMoreItemsListener {
+class ArticlesActivity : DaggerAppCompatActivity(), OnArticleClickListener, OnLoadMoreItemsListener {
 
-    @Inject lateinit var viewModel: ArticlesViewModel
+    @Inject
+    lateinit var viewModel: ArticlesViewModel
 
     private lateinit var adapter: ArticlesAdapter
 
@@ -76,7 +77,7 @@ class ArticlesActivity : DaggerActivity(), OnArticleClickListener, OnLoadMoreIte
     }
 
     private fun showLoadingIndicator(showing: Boolean) {
-        if (showing) toast("Fetching articles...")
+        if (showing) toast(getString(R.string.loading_msg_fetching))
     }
 
     private fun setArticles(articles: List<Article>) {
