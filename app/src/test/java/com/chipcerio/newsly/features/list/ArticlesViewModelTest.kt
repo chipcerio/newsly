@@ -1,6 +1,7 @@
 package com.chipcerio.newsly.features.list
 
-import com.chipcerio.newsly.data.Article
+import com.chipcerio.newsly.data.raw_types.Article
+import com.chipcerio.newsly.data.raw_types.Source
 import com.chipcerio.newsly.data.source.repository.ArticlesRepository
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
@@ -38,20 +39,22 @@ class ArticlesViewModelTest {
         SOURCES = arrayListOf("abc-news", "bbc-news")
 
         ARTICLES = arrayListOf(
-                Article(id = 1L,
-                        author = "ABC News",
-                        title = "UK News",
-                        description = "long desription",
-                        url = "http://url.com",
-                        urlToImage = "http://url.com/image.png",
-                        publishedAt = "Dec 05, 2017"),
-                Article(id = 2L,
-                        author = "BBC News",
-                        title = "London News",
-                        description = "long desription",
-                        url = "http://url.com",
-                        urlToImage = "http://url.com/image.png",
-                        publishedAt = "Dec 06, 2017"))
+            Article(
+                source = Source("", ""),
+                author = "ABC News",
+                title = "UK News",
+                description = "long desription",
+                url = "http://url.com",
+                urlToImage = "http://url.com/image.png",
+                publishedAt = "Dec 05, 2017"),
+            Article(
+                source = Source("", ""),
+                author = "BBC News",
+                title = "London News",
+                description = "long desription",
+                url = "http://url.com",
+                urlToImage = "http://url.com/image.png",
+                publishedAt = "Dec 06, 2017"))
 
         testObserver = TestObserver.create()
     }
@@ -68,5 +71,4 @@ class ArticlesViewModelTest {
         testObserver.assertSubscribed()
         testObserver.assertResult(ARTICLES)
     }
-
 }

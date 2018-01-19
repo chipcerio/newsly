@@ -4,6 +4,10 @@ import com.chipcerio.newsly.BuildConfig
 import com.chipcerio.newsly.api.ApiService
 import com.chipcerio.newsly.api.ApiService.Api.BASE_URL
 import com.chipcerio.newsly.api.ApiService.Api.VERSION
+import com.chipcerio.newsly.api.ArticleDeserializer
+import com.chipcerio.newsly.api.SourceDeserializer
+import com.chipcerio.newsly.data.raw_types.Article
+import com.chipcerio.newsly.data.raw_types.Source
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -18,8 +22,7 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     fun providesOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.NONE
@@ -35,12 +38,16 @@ class NetworkModule {
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun providesGson(): Gson = GsonBuilder().setLenient().create()
+    @Provides @Singleton
+    fun providesGson(): Gson {
+        return GsonBuilder()
+            .registerTypeAdapter(Source::class.java, SourceDeserializer())
+            .registerTypeAdapter(Article::class.java, ArticleDeserializer())
+            .setLenient()
+            .create()
+    }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
             .baseUrl("$BASE_URL$VERSION")
@@ -50,7 +57,6 @@ class NetworkModule {
             .build()
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     fun providesApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 }

@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.common.ext.loadFromUrl
 import com.chipcerio.newsly.common.ext.toDisplayableDateTime
-import com.chipcerio.newsly.data.Article
+import com.chipcerio.newsly.data.raw_types.Article
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {

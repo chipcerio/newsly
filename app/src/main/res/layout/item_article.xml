@@ -29,39 +29,40 @@
                 android:id="@+id/thumbnailView"
                 android:layout_width="112dp"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:contentDescription="@null"
+                android:scaleType="centerCrop"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <TextView
-                    android:id="@+id/titleView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@id/thumbnailView"
-                    android:layout_toRightOf="@id/thumbnailView"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:id="@+id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/thumbnailView"
+                android:layout_toRightOf="@id/thumbnailView"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
-                    android:id="@+id/sourceView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/titleView"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@id/thumbnailView"
-                    android:layout_toRightOf="@id/thumbnailView"
-                    android:text="BBC News" android:textAppearance="@style/TextAppearance.Compat.Notification.Line2"/>
+                android:id="@+id/sourceView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleView"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/thumbnailView"
+                android:layout_toRightOf="@id/thumbnailView"
+                android:text="BBC News"
+                android:textAppearance="@style/TextAppearance.Compat.Notification.Line2" />
 
         </RelativeLayout>
 
