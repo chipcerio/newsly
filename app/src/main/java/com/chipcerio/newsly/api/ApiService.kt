@@ -7,8 +7,8 @@ import retrofit2.http.Query
 interface ApiService {
 
     object Api {
-        val BASE_URL = "https://newsapi.org/"
-        val VERSION = "v2/"
+        const val BASE_URL = "https://newsapi.org/"
+        const val VERSION = "v2/"
     }
 
     @GET("everything")

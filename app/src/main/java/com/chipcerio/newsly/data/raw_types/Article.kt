@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @SuppressLint("ParcelCreator")
 @Parcelize
 class Article (
+    val id: Int,
     val source: Source,
     val author: String?,
     val title: String,

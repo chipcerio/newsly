@@ -1,5 +1,6 @@
 package com.chipcerio.newsly.data.source.local
 
+import com.chipcerio.newsly.common.Constants.Database.LIMIT
 import com.chipcerio.newsly.data.ArticleModel
 import com.chipcerio.newsly.data.SourceModel
 import com.chipcerio.newsly.data.raw_types.Article
@@ -16,22 +17,28 @@ constructor(private val db: AppDatabase) : ArticleSource {
     // https://groups.google.com/forum/#!msg/realm-java/6hFqdyoH67w/232lFPuc0eYJ
     private val id = AtomicInteger()
 
-    /*
-    SELECT * FROM articles
-    WHERE sourceId IN ('bloomberg','bbc-news')
-     */
-
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
 
-//        sources.joinToString(",", "\'", "\'")
+        val joinedSources = sources.joinToString { "," }
+        /*
+         * SELECT * FROM articles
+         * LIMIT 5 OFFSET 20
+         *
+         * page 1 = offset  0  = (1 * 5) - 5
+         * page 2 = offset  5  = (2 * 5) - 5
+         * page 3 = offset 10  = (3 * 5) - 5
+         * page 4 = offset 15  = (4 * 5) - 5
+         * page 5 = offset 20  = (5 * 5) - 5
+         */
+        val offset = (page * LIMIT) - LIMIT
 
-        // "bbc-news,bloomberg", 4
-        return db.articlesDao().getArticles(/*sources, page*/).toObservable()
+        return db.articlesDao().getArticlesByPage(offset).toObservable()
             .flatMapIterable { it }
             .map {
                 val sourceModel = db.sourcesDao().getSource(it.sourceId).blockingGet()
                 val source = Source(sourceModel.id, sourceModel.name)
                 Article(
+                    id = it.id,
                     source = source,
                     author = it.author,
                     title = it.title,
