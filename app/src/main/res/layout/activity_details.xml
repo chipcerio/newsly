@@ -64,7 +64,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <TextView
-        android:id="@+id/descriptionView"
+        android:id="@+id/sourceView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/titleView"

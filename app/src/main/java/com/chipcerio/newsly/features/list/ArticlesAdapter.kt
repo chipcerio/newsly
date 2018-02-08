@@ -6,16 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.common.ext.loadFromUrl
-import com.chipcerio.newsly.data.Article
+import com.chipcerio.newsly.data.ArticleModel
+import com.chipcerio.newsly.data.raw_types.Article
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_article.titleView
-import kotlinx.android.synthetic.main.item_article.descriptionView
-import kotlinx.android.synthetic.main.item_article.fullStoryView
-import kotlinx.android.synthetic.main.item_article.thumbnailView
+import kotlinx.android.synthetic.main.item_article.*
 
 class ArticlesAdapter(private val articles: MutableList<Article>,
-    private val onArticleClickListener: OnArticleClickListener,
-    private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+                      private val onArticleClickListener: OnArticleClickListener,
+                      private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(articles[position])
@@ -47,12 +45,11 @@ class ArticlesAdapter(private val articles: MutableList<Article>,
 
         fun bind(article: Article) {
             titleView.text = article.title
-            descriptionView.text = article.description
-            fullStoryView.setOnClickListener {
+            sourceView.text = "BBC News"
+            article.urlToImage?.let { thumbnailView.loadFromUrl(it) }
+            containerView.setOnClickListener {
                 onArticleClickListener.onArticleClick(article)
             }
-
-            article.urlToImage?.let { thumbnailView.loadFromUrl(it) }
         }
     }
 }

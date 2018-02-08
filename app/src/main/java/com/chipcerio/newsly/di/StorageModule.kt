@@ -21,5 +21,7 @@ class StorageModule {
     @Provides
     @Singleton
     fun providesAppDatabase(context: Context): AppDatabase =
-        Room.databaseBuilder(context, AppDatabase::class.java, Database.NAME).build()
+        Room.databaseBuilder(context, AppDatabase::class.java, Database.NAME)
+            .fallbackToDestructiveMigration()
+            .build()
 }
