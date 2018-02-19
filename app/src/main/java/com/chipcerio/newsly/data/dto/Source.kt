@@ -1,4 +1,4 @@
-package com.chipcerio.newsly.data.raw_types
+package com.chipcerio.newsly.data.dto
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
@@ -6,4 +6,4 @@ import kotlinx.android.parcel.Parcelize
 
 @SuppressLint("ParcelCreator")
 @Parcelize
-class Source (val id: String, val name: String) : Parcelable
+data class Source(val id: String, val name: String) : Parcelable

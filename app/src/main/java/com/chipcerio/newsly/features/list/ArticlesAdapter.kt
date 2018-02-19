@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.common.ext.loadFromUrl
-import com.chipcerio.newsly.data.ArticleModel
-import com.chipcerio.newsly.data.raw_types.Article
+import com.chipcerio.newsly.data.dto.Article
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_article.*
 

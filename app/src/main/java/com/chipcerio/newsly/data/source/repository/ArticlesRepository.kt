@@ -1,7 +1,7 @@
 package com.chipcerio.newsly.data.source.repository
 
-import com.chipcerio.newsly.data.raw_types.Article
-import com.chipcerio.newsly.data.raw_types.Source
+import com.chipcerio.newsly.data.dto.Article
+import com.chipcerio.newsly.data.dto.Source
 import com.chipcerio.newsly.data.source.ArticleSource
 import com.chipcerio.newsly.di.scopes.Local
 import com.chipcerio.newsly.di.scopes.Remote

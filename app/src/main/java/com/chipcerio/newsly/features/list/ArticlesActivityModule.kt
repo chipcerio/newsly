@@ -2,7 +2,7 @@ package com.chipcerio.newsly.features.list
 
 import com.chipcerio.newsly.api.ApiService
 import com.chipcerio.newsly.data.source.ArticleSource
-import com.chipcerio.newsly.data.source.local.AppDatabase
+import com.chipcerio.newsly.data.AppDatabase
 import com.chipcerio.newsly.data.source.local.ArticlesLocalSource
 import com.chipcerio.newsly.data.source.remote.ArticlesRemoteSource
 import com.chipcerio.newsly.di.scopes.Local

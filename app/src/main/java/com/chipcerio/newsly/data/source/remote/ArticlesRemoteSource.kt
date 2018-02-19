@@ -1,8 +1,8 @@
 package com.chipcerio.newsly.data.source.remote
 
 import com.chipcerio.newsly.api.ApiService
-import com.chipcerio.newsly.data.raw_types.Article
-import com.chipcerio.newsly.data.raw_types.Source
+import com.chipcerio.newsly.data.dto.Article
+import com.chipcerio.newsly.data.dto.Source
 import com.chipcerio.newsly.data.source.ArticleSource
 import io.reactivex.Observable
 import javax.inject.Inject

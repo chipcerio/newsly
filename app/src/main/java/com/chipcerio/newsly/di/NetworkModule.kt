@@ -6,8 +6,8 @@ import com.chipcerio.newsly.api.ApiService.Api.BASE_URL
 import com.chipcerio.newsly.api.ApiService.Api.VERSION
 import com.chipcerio.newsly.api.ArticleDeserializer
 import com.chipcerio.newsly.api.SourceDeserializer
-import com.chipcerio.newsly.data.raw_types.Article
-import com.chipcerio.newsly.data.raw_types.Source
+import com.chipcerio.newsly.data.dto.Article
+import com.chipcerio.newsly.data.dto.Source
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

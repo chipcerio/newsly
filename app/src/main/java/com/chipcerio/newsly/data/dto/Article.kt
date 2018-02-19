@@ -1,4 +1,4 @@
-package com.chipcerio.newsly.data.raw_types
+package com.chipcerio.newsly.data.dto
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @SuppressLint("ParcelCreator")
 @Parcelize
-class Article (
+data class Article (
     val id: Int,
     val source: Source,
     val author: String?,

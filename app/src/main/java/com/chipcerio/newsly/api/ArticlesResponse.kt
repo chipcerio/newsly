@@ -1,6 +1,6 @@
 package com.chipcerio.newsly.api
 
-import com.chipcerio.newsly.data.raw_types.Article
+import com.chipcerio.newsly.data.dto.Article
 
 class ArticlesResponse (
     val status: String,

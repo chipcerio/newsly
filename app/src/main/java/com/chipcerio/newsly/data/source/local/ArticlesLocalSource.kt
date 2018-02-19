@@ -1,10 +1,11 @@
 package com.chipcerio.newsly.data.source.local
 
 import com.chipcerio.newsly.common.Constants.Database.LIMIT
-import com.chipcerio.newsly.data.ArticleModel
-import com.chipcerio.newsly.data.SourceModel
-import com.chipcerio.newsly.data.raw_types.Article
-import com.chipcerio.newsly.data.raw_types.Source
+import com.chipcerio.newsly.data.entity.ArticlesEntity
+import com.chipcerio.newsly.data.entity.SourceEntity
+import com.chipcerio.newsly.data.AppDatabase
+import com.chipcerio.newsly.data.dto.Article
+import com.chipcerio.newsly.data.dto.Source
 import com.chipcerio.newsly.data.source.ArticleSource
 import io.reactivex.Observable
 import java.util.concurrent.atomic.AtomicInteger
@@ -50,7 +51,7 @@ constructor(private val db: AppDatabase) : ArticleSource {
     }
 
     override fun save(article: Article) {
-        val articleModel = ArticleModel(
+        val articleModel = ArticlesEntity(
             id = id.getAndIncrement(),
             sourceId = article.source.id,
             author = article.author,
@@ -58,12 +59,13 @@ constructor(private val db: AppDatabase) : ArticleSource {
             description = article.description,
             url = article.url,
             urlToImage = article.urlToImage,
-            publishedAt = article.publishedAt)
+            publishedAt = article.publishedAt
+        )
         db.articlesDao().save(articleModel)
     }
 
     override fun save(source: Source) {
-        val sourceModel = SourceModel(source.id, source.name)
+        val sourceModel = SourceEntity(source.id, source.name)
         db.sourcesDao().save(sourceModel)
     }
 }

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.common.ext.toast
-import com.chipcerio.newsly.data.raw_types.Article
+import com.chipcerio.newsly.data.dto.Article
 import com.chipcerio.newsly.features.details.DetailsActivity
 import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ARTICLE
 import com.chipcerio.newsly.features.list.ArticlesAdapter.OnArticleClickListener

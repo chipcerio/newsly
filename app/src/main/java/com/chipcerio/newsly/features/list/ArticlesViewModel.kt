@@ -1,6 +1,6 @@
 package com.chipcerio.newsly.features.list
 
-import com.chipcerio.newsly.data.raw_types.Article
+import com.chipcerio.newsly.data.dto.Article
 import com.chipcerio.newsly.data.source.repository.ArticlesRepository
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject

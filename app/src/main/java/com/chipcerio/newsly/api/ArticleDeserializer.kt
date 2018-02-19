@@ -1,8 +1,8 @@
 package com.chipcerio.newsly.api
 
 import com.chipcerio.newsly.common.ext.getOrElse
-import com.chipcerio.newsly.data.raw_types.Article
-import com.chipcerio.newsly.data.raw_types.Source
+import com.chipcerio.newsly.data.dto.Article
+import com.chipcerio.newsly.data.dto.Source
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
