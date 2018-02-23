@@ -14,7 +14,7 @@ Newsly uses the latest cutting edge libraries, tools, and patterns. As a summary
  * app is written entirely in [Kotlin](https://kotlinlang.org/)
  * uses [RxJava2](https://github.com/ReactiveX/RxJava)
  * uses [Retrofit](http://square.github.io/retrofit/) for API interface
- * uses [Moshi](https://github.com/square/moshi) for JSON serialization/deserialization
+ * uses [Gson](https://github.com/google/gson) for JSON serialization/deserialization
  * uses [Room](https://developer.android.com/topic/libraries/architecture/room.html) for persistence
  * uses [dagger-android](https://google.github.io/dagger/android.html) for dependency injection
  * uses [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) architecture pattern
