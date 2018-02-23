@@ -16,8 +16,10 @@ constructor(private val apiService: ApiService) : ArticleSource {
             .map { it.articles }
     }
 
-    override fun save(article: Article) {}
+    override fun save(article: Article) {
+    }
 
-    override fun save(source: Source) {}
+    override fun save(source: Source) {
+    }
 }
 

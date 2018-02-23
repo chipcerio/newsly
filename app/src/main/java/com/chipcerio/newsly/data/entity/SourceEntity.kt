@@ -13,7 +13,8 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = Table.SOURCES)
 data class SourceEntity(
 
-    @PrimaryKey val id: String,
+    @PrimaryKey
+    val id: String,
 
     val name: String
 

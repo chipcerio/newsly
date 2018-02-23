@@ -9,13 +9,20 @@ import javax.inject.Inject
 class ArticlesViewModel @Inject
 constructor(private val repository: ArticlesRepository) {
 
-    private var loadingIndicatorSubject = BehaviorSubject.createDefault(false)
+    private var onProgressStream = BehaviorSubject.createDefault(false)
 
     fun loadArticles(sources: List<String>, page: Int): Observable<List<Article>> {
         return repository.getArticles(sources, page)
-            .doOnSubscribe { loadingIndicatorSubject.onNext(true) }
-            .doOnNext { loadingIndicatorSubject.onNext(false) }
+            .doOnSubscribe {
+                onProgressStream.onNext(true)
+            }
+            .doOnNext {
+                onProgressStream.onNext(false)
+            }
+            .doOnComplete {
+                onProgressStream.onNext(false)
+            }
     }
 
-    fun getLoadingIndicator(): Observable<Boolean> = loadingIndicatorSubject
+    fun getLoadingIndicator(): Observable<Boolean> = onProgressStream
 }

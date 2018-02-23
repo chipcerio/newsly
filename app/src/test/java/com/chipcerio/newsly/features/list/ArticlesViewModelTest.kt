@@ -40,7 +40,8 @@ class ArticlesViewModelTest {
 
         ARTICLES = arrayListOf(
             Article(
-                source = Source("", ""),
+                id = 0L,
+                source = Source("abc_news", "ABC News"),
                 author = "ABC News",
                 title = "UK News",
                 description = "long desription",
@@ -48,7 +49,8 @@ class ArticlesViewModelTest {
                 urlToImage = "http://url.com/image.png",
                 publishedAt = "Dec 05, 2017"),
             Article(
-                source = Source("", ""),
+                id = 1L,
+                source = Source("bbc_news", "BBC News"),
                 author = "BBC News",
                 title = "London News",
                 description = "long desription",

@@ -9,11 +9,17 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class ArticlesRepository @Inject
-constructor(@Remote private val remote: ArticleSource,
+constructor(
+    @Remote private val remote: ArticleSource,
     @Local private val local: ArticleSource) : ArticleSource {
 
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
         return remote.getArticles(sources, page)
+            .flatMapIterable { it }
+            .doOnNext {
+                save(it)
+                save(it.source)
+            }.toList().toObservable()
     }
 
     override fun save(article: Article) {

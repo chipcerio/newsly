@@ -18,7 +18,7 @@ class ArticleDeserializer : JsonDeserializer<Article> {
         val name = sourceJson.getOrElse<String>("name")
         val source = Source(id, name)
 
-        val articleId = root.getOrElse<Int>("id")
+        val articleId = root.getOrElse<Long>("id")
         val author = root.getOrElse<String>("author")
         val title = root.getOrElse<String>("title")
         val description = root.getOrElse<String>("description")

@@ -1,22 +1,18 @@
 package com.chipcerio.newsly.data.source.local
 
 import com.chipcerio.newsly.common.Constants.Database.LIMIT
-import com.chipcerio.newsly.data.entity.ArticlesEntity
-import com.chipcerio.newsly.data.entity.SourceEntity
+import com.chipcerio.newsly.common.PushId
 import com.chipcerio.newsly.data.AppDatabase
 import com.chipcerio.newsly.data.dto.Article
 import com.chipcerio.newsly.data.dto.Source
+import com.chipcerio.newsly.data.entity.ArticlesEntity
+import com.chipcerio.newsly.data.entity.SourceEntity
 import com.chipcerio.newsly.data.source.ArticleSource
 import io.reactivex.Observable
-import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 
 class ArticlesLocalSource @Inject
 constructor(private val db: AppDatabase) : ArticleSource {
-
-    // https://stackoverflow.com/a/2179012/1076574
-    // https://groups.google.com/forum/#!msg/realm-java/6hFqdyoH67w/232lFPuc0eYJ
-    private val id = AtomicInteger()
 
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
 
@@ -36,10 +32,10 @@ constructor(private val db: AppDatabase) : ArticleSource {
         return db.articlesDao().getArticlesByPage(offset).toObservable()
             .flatMapIterable { it }
             .map {
-                val sourceModel = db.sourcesDao().getSource(it.sourceId).blockingGet()
+                val sourceModel = db.sourcesDao().getSource(it.source).blockingGet()
                 val source = Source(sourceModel.id, sourceModel.name)
                 Article(
-                    id = it.id,
+                    id = System.currentTimeMillis(),
                     source = source,
                     author = it.author,
                     title = it.title,
@@ -51,9 +47,9 @@ constructor(private val db: AppDatabase) : ArticleSource {
     }
 
     override fun save(article: Article) {
-        val articleModel = ArticlesEntity(
-            id = id.getAndIncrement(),
-            sourceId = article.source.id,
+        val articleEntity = ArticlesEntity(
+            id = PushId.generate(),
+            source = article.source.name,
             author = article.author,
             title = article.title,
             description = article.description,
@@ -61,7 +57,7 @@ constructor(private val db: AppDatabase) : ArticleSource {
             urlToImage = article.urlToImage,
             publishedAt = article.publishedAt
         )
-        db.articlesDao().save(articleModel)
+        db.articlesDao().save(articleEntity)
     }
 
     override fun save(source: Source) {
