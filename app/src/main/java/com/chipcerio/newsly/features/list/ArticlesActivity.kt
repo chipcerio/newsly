@@ -56,7 +56,10 @@ class ArticlesActivity : DaggerAppCompatActivity(), OnArticleClickListener, OnLo
                 viewModel.loadArticles(arrayListOf("bbc-news", "bloomberg"), it)
             }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ setArticles(it) }, { Timber.e(it) }))
+            .subscribe({
+                setArticles(it)
+            }, { Timber.e(it) })
+        )
 
         // putting in onCreate to prevent unwanted
         // network calls when switching activities
@@ -90,7 +93,10 @@ class ArticlesActivity : DaggerAppCompatActivity(), OnArticleClickListener, OnLo
         disposables.add(viewModel.getLoadingIndicator()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ showLoadingIndicator(it) }))
+            .subscribe({
+                showLoadingIndicator(it)
+            })
+        )
     }
 
     private fun showLoadingIndicator(showing: Boolean) {

@@ -11,9 +11,11 @@ class SourceDeserializer : JsonDeserializer<Source> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Source {
         val root = json.asJsonObject
 
-        val id = if (root.get("id").isJsonNull)
-            root.get("id").asString.replace("\\s".toRegex(), "").decapitalize()
-        else root.get("id").asString
+        val id = if (root.get("id").isJsonNull) {
+            root.get("name").asString.decapitalize()
+        } else {
+            root.get("id").asString.decapitalize()
+        }
 
         val name = root.get("name").asString
 

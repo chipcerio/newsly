@@ -19,6 +19,7 @@ constructor(private val db: AppDatabase) : ArticleSource {
         val joinedSources = sources.joinToString { "," }
         /*
          * SELECT * FROM articles
+         * WHERE source = 'Bloomberg'
          * LIMIT 5 OFFSET 20
          *
          * page 1 = offset  0  = (1 * 5) - 5

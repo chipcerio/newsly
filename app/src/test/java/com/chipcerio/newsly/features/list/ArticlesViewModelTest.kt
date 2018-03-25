@@ -5,6 +5,8 @@ import com.chipcerio.newsly.data.dto.Source
 import com.chipcerio.newsly.data.source.repository.ArticlesRepository
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -13,6 +15,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnit
 
+// http://www.baeldung.com/rxjava-testing
 class ArticlesViewModelTest {
 
     @Rule @JvmField
@@ -27,6 +30,8 @@ class ArticlesViewModelTest {
 
     private lateinit var ARTICLES: ArrayList<Article>
 
+    private lateinit var NO_ARTICLES: ArrayList<Article>
+
     private lateinit var testObserver: TestObserver<List<Article>>
 
     private val PAGE_1 = 1
@@ -38,6 +43,8 @@ class ArticlesViewModelTest {
         viewModel = ArticlesViewModel(repository)
 
         SOURCES = arrayListOf("abc-news", "bbc-news")
+
+        NO_ARTICLES = arrayListOf()
 
         ARTICLES = arrayListOf(
             Article(
@@ -54,7 +61,7 @@ class ArticlesViewModelTest {
                 source = Source("bbc_news", "BBC News", "", "", "", "", ""),
                 author = "BBC News",
                 title = "London News",
-                description = "long desription",
+                description = "long description",
                 url = "http://url.com",
                 urlToImage = "http://url.com/image.png",
                 publishedAt = "Dec 06, 2017"))
@@ -65,13 +72,28 @@ class ArticlesViewModelTest {
     @Test
     fun should_HaveArticles_When_Requested() {
         // given
-        `when`(repository.getArticles(SOURCES, PAGE_1)).thenReturn(Observable.just(ARTICLES))
+        `when`(repository.getArticles(SOURCES, PAGE_1))
+            .thenReturn(Observable.just(ARTICLES))
 
         // when
-        viewModel.loadArticles(SOURCES, PAGE_1).subscribe(testObserver)
+        viewModel.loadArticles(SOURCES, PAGE_1)
+            .subscribe(testObserver)
 
         // then
         testObserver.assertSubscribed()
         testObserver.assertResult(ARTICLES)
+        assertFalse(ARTICLES.isEmpty())
+    }
+
+    @Test
+    fun Should_DisplayNothing_When_ArticlesIsEmpty() {
+        `when`(repository.getArticles(SOURCES, PAGE_1))
+            .thenReturn(Observable.just(NO_ARTICLES))
+
+        viewModel.loadArticles(SOURCES, PAGE_1)
+            .subscribe(testObserver)
+
+        testObserver.assertSubscribed()
+        assertTrue(NO_ARTICLES.isEmpty())
     }
 }

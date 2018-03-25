@@ -1,0 +1,247 @@
+
+{
+  "status": "ok",
+  "totalResults": 80052,
+  "articles": [
+    {
+      "source": {
+        "id": "000",
+        "name": "Hurriyet.com.tr"
+      },
+      "author": "hurriyet.com.tr",
+      "title": "Bitcoin nedir? Bitcoin nasıl alınır?",
+      "description": "Bitcoin nedir sorunun cevabı şu sıralar oldukça yoğun olarak merak edilir. Tabii bir de bitcoin nasıl alınır sorusu var ki en çok merak edilen nokta da sanırız bu. Peki son günlerde rekor üstüne rekor kıran bitcoin ne ifade ediyor? Bitcoin'i almak için ne yap…",
+      "url": "http://www.hurriyet.com.tr/bitcoin-nedir-bitcoin-nasil-alinir-40663857",
+      "urlToImage": "http://i.hurimg.com/i/hurriyet/75/0x0/5a20441fc03c0e1c18b2014b.jpg",
+      "publishedAt": "2017-11-30T17:49:00Z"
+    },
+    {
+      "source": {
+        "id": "001",
+        "name": "Fontanka.ru"
+      },
+      "author": null,
+      "title": "Форк, или как криптоденьги делают криптоденьги",
+      "description": "Сколько разновидностей биткойна Вы знаете? - Одну?! Две?! На сегодня я знаю минимум 10 - Bitcoin Cash (BCH), Bitcoin Gold (BTG), Bitcoin Diamond (BCD), Super Bitcoin (SBTC), Bitcoin God (GOD), Bitcoin X (BCX), Bitcoin Private (BTCP), Bitcoin XT (BTX), Bitcoin…",
+      "url": "http://www.fontanka.ru/2018/02/22/113/?feed",
+      "urlToImage": "http://cdn.fontanka.ru/mm/items/2017/12/8/0018/KSP_011614_00058_11.jpg",
+      "publishedAt": "2018-02-22T13:58:00Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Sozcu.com.tr"
+      },
+      "author": "Sözcü",
+      "title": "Diyanet’ten Bitcoin açıklaması geldi! Bitcoin caiz mi? Bitcoin nedir?",
+      "description": "Bitcoin yükselişiyle bu sıralar sık sık gündeme geliyor. Bitcoin hakkında Diyanetten açıklama geldi, “Bitcoin ve Ethereum gibi sanal paraları yatırım amaçlı almak caiz midir?” şeklinde sorulan soruya Diyanet İşlerinden dinen uygun olmadığı cevabı geldi. MERKE…",
+      "url": "http://www.sozcu.com.tr/2017/ekonomi/diyanetten-bitcoin-aciklamasi-geldi-bitcoin-caiz-mi-bitcoin-nedir-2108617/",
+      "urlToImage": "http://i.sozcu.com.tr/wp-content/uploads/2017/07/bitcoin-nedir.jpg?v=2108617",
+      "publishedAt": "2017-11-28T07:46:25Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Haber7.com"
+      },
+      "author": "Haber7",
+      "title": "Bitcoin nasıl alınır? 27.11.2017 bitcoin kaç TL?",
+      "description": "2017 yılının başından beri yükselişini sürdüren bitcoin gündemden düşmüyor. Son zamanlarda altından çok daha meşhur olan dijital yatırım aracı bitcoin nedir? Bitcoin nasıl alınır, nasıl satılır? Bitcoin kaç TL oldu? İşte, bitcoin hakkında bilinmeyen ve merak …",
+      "url": "http://ekonomi.haber7.com/ekonomi/haber/2469168-bitcoin-nasil-alinir-27112017-bitcoin-kac-tl",
+      "urlToImage": "http://i.haber7.com//haber/haber7/photos/2017/44/pgAbk_1509447479_514.jpg",
+      "publishedAt": "2017-11-27T11:35:00Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Haber7.com"
+      },
+      "author": "Haber7",
+      "title": "Bitcoin nasıl alınır? 28.11.2017 bitcoin kaç TL?",
+      "description": "2017 yılının başından beri yükselişini sürdüren bitcoin gündemden düşmüyor. Son zamanlarda altından çok daha meşhur olan dijital yatırım aracı bitcoin nedir? Bitcoin nasıl alınır, nasıl satılır? Bitcoin kaç TL oldu? İşte, bitcoin hakkında bilinmeyen ve merak …",
+      "url": "http://ekonomi.haber7.com/ekonomi/haber/2469168-bitcoin-nasil-alinir-28112017-bitcoin-kac-tl",
+      "urlToImage": "http://i.haber7.com//haber/haber7/photos/2017/44/pgAbk_1509447479_514.jpg",
+      "publishedAt": "2017-11-28T06:34:00Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Digitalocean.com"
+      },
+      "author": "VuLe",
+      "title": "hidden bitcoin service installed on my VPS ?",
+      "description": "I create a new VPS ( centos7 ), when I run command # firewall-cmd --get-services I found the list of service : bitcoin bitcoin-rpc bitcoin-testnet bitcoin-testnet-rpc. I dont installed any bitcoin service on my VPS. Thank you",
+      "url": "https://www.digitalocean.com/community/questions/hidden-bitcoin-service-installed-on-my-vps",
+      "urlToImage": "https://www.digitalocean.com/assets/community/default_community_sharing_qa-da58e80dd76018aacc417235e85e444f.png",
+      "publishedAt": "2017-11-30T02:28:22Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Haber7.com"
+      },
+      "author": "Haber7",
+      "title": "Bitcoin nasıl alınır? Bitcoin ne kadar oldu?",
+      "description": "2017 yılının başından beri yükselişini sürdüren bitcoin gündemden düşmüyor. Son zamanlarda altından çok daha meşhur olan dijital yatırım aracı bitcoin nedir? Bitcoin nasıl alınır, nasıl satılır? Bitcoin kaç TL oldu? İşte, bitcoin hakkında bilinmeyen ve merak …",
+      "url": "http://ekonomi.haber7.com/ekonomi/haber/2469168-bitcoin-nasil-alinir-bitcoin-ne-kadar-oldu",
+      "urlToImage": "http://i.haber7.com//haber/haber7/photos/2017/44/pgAbk_1509447479_514.jpg",
+      "publishedAt": "2017-11-28T07:13:00Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Haber7.com"
+      },
+      "author": "Haber7",
+      "title": "27.11.2017 bitcoin kaç TL? Bitcoin nasıl alınır?",
+      "description": "2017 yılının başından beri yükselişini sürdüren bitcoin gündemden düşmüyor. Son zamanlarda altından çok daha meşhur olan dijital yatırım aracı bitcoin nedir? Bitcoin nasıl alınır, nasıl satılır? Bitcoin kaç TL oldu? İşte, bitcoin hakkında bilinmeyen ve merak …",
+      "url": "http://ekonomi.haber7.com/ekonomi/haber/2469168-27112017-bitcoin-kac-tl-bitcoin-nasil-alinir",
+      "urlToImage": "http://i.haber7.com//haber/haber7/photos/2017/44/pgAbk_1509447479_514.jpg",
+      "publishedAt": "2017-11-27T06:32:00Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Sweclockers.com"
+      },
+      "author": null,
+      "title": "Bitcoin",
+      "description": "Hallå Sweclockers! Tänkte höra om det möjligtvis finns någon här inne som har erfarenhet av Bitcoin samt vet hur det fungerar med det? Dvs hur man sätter upp det osv osv?... Har försökt undersöka saken, dock dessvärre utan större framgång med exakt hur det he…",
+      "url": "https://www.sweclockers.com/forum/trad/1499746-bitcoin",
+      "urlToImage": "https://www.sweclockers.com/forum/trad/1499746/og-image",
+      "publishedAt": "2017-11-30T11:15:38Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Blognone.com"
+      },
+      "author": "medkung",
+      "title": "นักเศรษฐศาสตร์โนเบล Joseph Stiglitz บอก Bitcoin เป็นฟองสบู่",
+      "description": "ก่อนหน้านั้นมี CEO ของธนาคารชื่อดังหรือไม่ก็คนที่อยู่ในแวดวงการเงินออกมาให้ความคิดเห็นเกี่ยวกับ Bitcoin มากมาย ไม่ว่าจะเป็น Jamie Dimon ของทาง JPMorgan เจ้าของ Hedge Fund อย่าง Ray Dalio แต่ไม่ค่อยมีมุมมองจากนักเศรษฐศาสตร์ชื่อดังเท่าไหร่นัก ล่าสุดนักเศรษฐศาสต…",
+      "url": "https://www.blognone.com/node/97724",
+      "urlToImage": "https://www.blognone.com/sites/default/files/externals/93255007e4c99183c96a9a358cb77556.jpg",
+      "publishedAt": "2017-11-30T07:38:31Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Blognone.com"
+      },
+      "author": "puffyhero",
+      "title": "การขุด Bitcoin ทำให้การใช้พลังงานโดยรวมของโลกพุ่งสูงขึ้นอย่างมาก",
+      "description": "เป็นที่ทราบกันดีอยู่ว่ามูลค่าของ Bitcoin นับวันจะยิ่งพุ่งสูงขึ้นไปจนล่าสุดนั้นพบว่าพุ่งขึ้นไปกว่า 9,000 ดอลลาร์ต่อ BTC แล้ว ในทางเดียวกันพลังงานไฟฟ้าที่เป็นทรัพยากรหลักสำหรับการขุด Bitcoin นั้นก็ได้มีปริมาณการใช้ที่เพิ่มสูงขึ้นมากเช่นกัน อีกทั้งยังมีข่าวว่า B…",
+      "url": "https://www.blognone.com/node/97633",
+      "urlToImage": "https://www.blognone.com/sites/default/files/externals/9a86bcfd825c871365975bf24867b6b2.jpg",
+      "publishedAt": "2017-11-28T10:53:24Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Fool.com"
+      },
+      "author": "newsfeedback@fool.com (Jordan Wathen)",
+      "title": "A Bitcoin Fund Will Soon Pay Distributions to Investors",
+      "description": "Bitcoin Investment Trust will soon pay two cash distributions to shareholders for the bitcoin cash and bitcoin gold it owns.",
+      "url": "https://www.fool.com/investing/2017/11/28/bitcoin-investment-trust-distribution.aspx",
+      "urlToImage": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F464788%2Fbitcoin-investment-trust-distribution-bitcoin-cash-bitcoin-gold.jpg&h=630&w=1200&op=resize",
+      "publishedAt": "2017-11-28T21:00:00Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Dribbble.com"
+      },
+      "author": "Adam Mihalov",
+      "title": "Bitcoin",
+      "description": "Unused styleframe about bitcoin",
+      "url": "https://dribbble.com/shots/4187251-Bitcoin",
+      "urlToImage": "https://cdn.dribbble.com/users/588931/screenshots/4187251/bitcoin.png",
+      "publishedAt": "2018-02-05T08:15:55Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Thingiverse.com"
+      },
+      "author": "Loggger",
+      "title": "Bitcoin",
+      "description": "it's pretty selfexplanitory ( a bitcoin)",
+      "url": "https://www.thingiverse.com/thing:2803553",
+      "urlToImage": "https://cdn.thingiverse.com/renders/0b/54/c6/2b/c8/a85cb22d7df27d55d357dfde120518bd_preview_featured.jpg",
+      "publishedAt": "2018-02-22T23:21:13Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Wykop.pl"
+      },
+      "author": "https://www.wykop.pl/ludzie/ripplexrp1/",
+      "title": "Najlepszy ASIC do kopania Bitcoin w 2018 roku",
+      "description": "The best ASIC to mine Bitcoin in 2018 , best bitcoin mining hardware, asic mining hardware, bitcoin miner calculator, best bitcoin miner software, bitcoin mining hardware for sale, bitcoin mining computer, antminer s7, antminer r4",
+      "url": "https://www.wykop.pl/link/4124103/najlepszy-asic-do-kopania-bitcoin-w-2018-roku/",
+      "urlToImage": "https://www.wykop.pl/cdn/c3397993/link_BNSQkQAyU9MIQXnrBEAPq36qTkvhcxyz,w1200h627.jpg",
+      "publishedAt": "2018-01-22T06:46:51Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Decentralized.tv"
+      },
+      "author": "John",
+      "title": "Do Bitcoin Futures Conspire to Move Bitcoin Prices? – #ANALYSIS",
+      "description": "Are bitcoin futures going to negatively impact the price of bitcoin? The post Do Bitcoin Futures Conspire to Move Bitcoin Prices? – #ANALYSIS appeared first on DECENTRALIZED TV. Do Bitcoin Futures Conspire to Move Bitcoin Prices? – #ANALYSIS",
+      "url": "https://decentralized.tv/bitcoin-futures-conspire-move-bitcoin-prices-analysis/",
+      "urlToImage": "https://decentralized.tv/wp-content/uploads/2018/01/bitcoin-futures-manipulate-markets.jpg",
+      "publishedAt": "2018-01-28T19:52:26Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Nzherald.co.nz"
+      },
+      "author": "newsfeeds@nzherald.co.nz",
+      "title": "Search data shows Kiwis losing interest in bitcoin",
+      "description": "Google trend data shows that bitcoin is receding back into its niche after a period of enormous hype.Searches for 'bitcoin', 'how to buy bitcoin', 'invest in bitcoin' and 'bitcoin price' have all steadily declined since peaking...",
+      "url": "http://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=11986191",
+      "urlToImage": "//www.nzherald.co.nz/resizer/Qrg53WKNGafIQMHRxv-ArJff47A=/1200x0/smart/filters:quality(70)/arc-anglerfish-syd-prod-nzme.s3.amazonaws.com/public/S5I4KCRE4VGMZPOI34C5ICJDHE.jpg",
+      "publishedAt": "2018-02-01T05:36:18Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Blognone.com"
+      },
+      "author": "mk",
+      "title": "งานสัมมนาใหญ่ Bitcoin ประกาศไม่รับจ่ายค่าตั๋วเป็น Bitcoin, รับเฉพาะเงินจริงเท่านั้น",
+      "description": "งานสัมมนา The North American Bitcoin Conference ที่จะจัดในสหรัฐอเมริกาวันที่ 18-19 มกราคมนี้ ประกาศไม่รับการจ่ายค่าตั๋วเป็น Bitcoin และ cryptocurrency ทั้งหมด เลือกรับเฉพาะเงินดอลลาร์เท่านั้น เว็บไซต์ของงานระบุว่าที่ผ่านมา รับการจ่ายค่าตั๋วเป็นเงิน cryptocurr…",
+      "url": "https://www.blognone.com/node/99009",
+      "urlToImage": "https://www.blognone.com/sites/default/files/externals/f1d38068bf52d2ebc67a41710ea4765d.png",
+      "publishedAt": "2018-01-12T03:40:21Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Derstandard.at"
+      },
+      "author": "redaktion@derStandard.at (derStandard.at Redaktion)",
+      "title": "Bitcoin - Bitcoin-Kursrutsch zunächst gestoppt",
+      "description": "Eine Einheit der Kryptowährung kostete am Dienstag auf dem Handelsplatz Bitstamp zuletzt 13.450 Dollar, auf Coinbase knapp 13.500 Dollar",
+      "url": "https://derstandard.at/2000071342529/Bitcoin-Kursrutsch-zunaechst-gestoppt",
+      "urlToImage": "https://images.derstandard.at/2018/01/02/reutersruvic.jpg",
+      "publishedAt": "2018-01-02T09:58:48Z"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Sky.com"
+      },
+      "author": "Sky News",
+      "title": "Bitcoin conference stops accepting... Bitcoin",
+      "description": "A conference dedicated to Bitcoin has stopped accepting the cryptocurrency in payment for tickets because of difficulties in processing payments.",
+      "url": "https://news.sky.com/story/bitcoin-conference-stops-accepting-bitcoin-over-processing-costs-11203399",
+      "urlToImage": "https://e3.365dm.com/17/10/1600x900/skynews-bitcoin-dollar-currency_4133717.jpg?20171021002906",
+      "publishedAt": "2018-01-11T11:44:00Z"
+    }
+  ]
+}
