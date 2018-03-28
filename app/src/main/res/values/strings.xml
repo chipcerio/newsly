@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Newsly</string>
     <string name="loading_msg_fetching">Fetching articles...</string>
+    <string name="edit_sources">Edit Sources</string>
+    <string name="title_sources">News Sources</string>
 </resources>

@@ -1,8 +1,8 @@
 package com.chipcerio.newsly.features.list
 
 import com.chipcerio.newsly.api.ApiService
-import com.chipcerio.newsly.data.source.ArticleSource
 import com.chipcerio.newsly.data.AppDatabase
+import com.chipcerio.newsly.data.source.ArticleSource
 import com.chipcerio.newsly.data.source.local.ArticlesLocalSource
 import com.chipcerio.newsly.data.source.remote.ArticlesRemoteSource
 import com.chipcerio.newsly.di.scopes.Local
@@ -15,13 +15,9 @@ class ArticlesActivityModule {
 
     @Provides
     @Remote
-    fun providesArticlesRemoteSource(apiService: ApiService): ArticleSource {
-        return ArticlesRemoteSource(apiService)
-    }
+    fun providesArticlesRemoteSource(apiService: ApiService): ArticleSource = ArticlesRemoteSource(apiService)
 
     @Provides
     @Local
-    fun providesArticlesLocalSource(db: AppDatabase): ArticleSource {
-        return ArticlesLocalSource(db)
-    }
+    fun providesArticlesLocalSource(db: AppDatabase): ArticleSource = ArticlesLocalSource(db)
 }

@@ -33,7 +33,15 @@ constructor(private val db: AppDatabase) : ArticleSource {
             .flatMapIterable { it }
             .map {
                 val sourceModel = db.sourcesDao().getSource(it.source).blockingGet()
-                val source = Source(sourceModel.id, sourceModel.name)
+                val source = Source(
+                    sourceModel.id,
+                    sourceModel.name,
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                )
                 Article(
                     id = System.currentTimeMillis(),
                     source = source,

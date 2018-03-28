@@ -17,6 +17,6 @@ class SourceDeserializer : JsonDeserializer<Source> {
 
         val name = root.get("name").asString
 
-        return Source(id, name)
+        return Source(id, name, "", "", "", "", "")
     }
 }

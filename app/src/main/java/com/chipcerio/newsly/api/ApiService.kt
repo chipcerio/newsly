@@ -16,4 +16,7 @@ interface ApiService {
         @Query("sources") sources: String,
         @Query("page") page: Int
     ): Observable<ArticlesResponse>
+
+    @GET("sources")
+    fun getSources(): Observable<SourcesResponse>
 }

@@ -3,6 +3,8 @@ package com.chipcerio.newsly.features.list
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import com.chipcerio.newsly.R
 import com.chipcerio.newsly.common.ext.toast
 import com.chipcerio.newsly.data.dto.Article
@@ -10,6 +12,7 @@ import com.chipcerio.newsly.features.details.DetailsActivity
 import com.chipcerio.newsly.features.details.DetailsActivity.Companion.EXTRA_ARTICLE
 import com.chipcerio.newsly.features.list.ArticlesAdapter.OnArticleClickListener
 import com.chipcerio.newsly.features.list.ArticlesAdapter.OnLoadMoreItemsListener
+import com.chipcerio.newsly.features.sources_list.SourcesActivity
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -38,6 +41,7 @@ class ArticlesActivity : DaggerAppCompatActivity(), OnArticleClickListener, OnLo
         setContentView(R.layout.activity_main)
 
         toolbarView.title = getString(R.string.app_name)
+        setSupportActionBar(toolbarView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ArticlesAdapter(mutableListOf(), this, this)
@@ -67,6 +71,19 @@ class ArticlesActivity : DaggerAppCompatActivity(), OnArticleClickListener, OnLo
     override fun onStop() {
         super.onStop()
         disposables.clear()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.sources_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.sources_menu) {
+            startActivity(Intent(this, SourcesActivity::class.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun bindLoadingState() {

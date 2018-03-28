@@ -18,7 +18,8 @@ class ArticlesViewModelTest {
     @Rule @JvmField
     val mockitoRule = MockitoJUnit.rule()
 
-    @Mock private lateinit var repository: ArticlesRepository
+    @Mock
+    private lateinit var repository: ArticlesRepository
 
     private lateinit var viewModel: ArticlesViewModel
 
@@ -41,16 +42,16 @@ class ArticlesViewModelTest {
         ARTICLES = arrayListOf(
             Article(
                 id = 0L,
-                source = Source("abc_news", "ABC News"),
+                source = Source("abc_news", "ABC News","", "", "", "", ""),
                 author = "ABC News",
                 title = "UK News",
-                description = "long desription",
+                description = "long description",
                 url = "http://url.com",
                 urlToImage = "http://url.com/image.png",
                 publishedAt = "Dec 05, 2017"),
             Article(
                 id = 1L,
-                source = Source("bbc_news", "BBC News"),
+                source = Source("bbc_news", "BBC News", "", "", "", "", ""),
                 author = "BBC News",
                 title = "London News",
                 description = "long desription",
@@ -62,7 +63,7 @@ class ArticlesViewModelTest {
     }
 
     @Test
-    fun Should_HaveArticles_When_Requested() {
+    fun should_HaveArticles_When_Requested() {
         // given
         `when`(repository.getArticles(SOURCES, PAGE_1)).thenReturn(Observable.just(ARTICLES))
 
