@@ -6,4 +6,6 @@ import io.reactivex.Observable
 interface NewsSources {
 
     fun getSources(): Observable<List<Source>>
+
+    fun saveSource(source: Source)
 }

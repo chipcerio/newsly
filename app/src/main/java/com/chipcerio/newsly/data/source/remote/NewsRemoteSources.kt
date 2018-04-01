@@ -14,4 +14,10 @@ constructor(private val apiService: ApiService) : NewsSources {
             .map {
                 it.sources
             }
+            .onErrorResumeNext { _: Throwable ->
+                Observable.just(emptyList())
+            }
+
+    override fun saveSource(source: Source) {
+    }
 }

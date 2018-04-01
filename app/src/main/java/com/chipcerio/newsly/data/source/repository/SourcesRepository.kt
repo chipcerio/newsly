@@ -14,6 +14,25 @@ constructor(
 ) : NewsSources {
 
     override fun getSources(): Observable<List<Source>> {
+        return Observable.concatArray(
+            getSourcesFromDb(),
+            getSourcesFromApiAndSave())
+    }
+
+    private fun getSourcesFromApiAndSave(): Observable<List<Source>> {
         return remote.getSources()
+            .flatMap {
+                Observable.fromIterable(it).doOnNext {
+                    saveSource(it)
+                }
+            }.toList().toObservable()
+    }
+
+    private fun getSourcesFromDb(): Observable<List<Source>> {
+        return local.getSources()
+    }
+
+    override fun saveSource(source: Source) {
+        local.saveSource(source)
     }
 }
