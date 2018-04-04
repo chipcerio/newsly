@@ -1,10 +1,13 @@
 package com.chipcerio.newsly.features.sources_list
 
+import android.graphics.Color
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.chipcerio.newsly.R
 import com.chipcerio.newsly.data.dto.Source
 
 class SourcesAdapter(
@@ -27,12 +30,24 @@ class SourcesAdapter(
         notifyItemChanged(position)
     }
 
-    inner class ViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
+    inner class ViewHolder(private val containerView: View) : RecyclerView.ViewHolder(containerView) {
 
         private var src: TextView = containerView.findViewById(android.R.id.text1)
 
         fun bind(source: Source) {
             src.text = source.name
+
+            val accent = ResourcesCompat.getColor(containerView.resources, R.color.colorAccent, null)
+
+            // https://stackoverflow.com/a/45318967/1076574
+            val color = if (source.selected) accent else Color.WHITE
+            containerView.setBackgroundColor(color)
+
+            containerView.setOnClickListener {
+                source.selected = !source.selected
+                it.setBackgroundColor(if (source.selected) accent else Color.WHITE)
+            }
+
         }
     }
 }
