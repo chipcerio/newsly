@@ -16,7 +16,7 @@ constructor(private val db: AppDatabase) : ArticleSource {
 
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
 
-        val joinedSources = sources.joinToString { "," }
+        // val joinedSources = sources.joinToString { "," }
         /*
          * SELECT * FROM articles
          * WHERE source = 'Bloomberg'
@@ -33,16 +33,15 @@ constructor(private val db: AppDatabase) : ArticleSource {
         return db.articlesDao().getArticlesByPage(offset).toObservable()
             .flatMapIterable { it }
             .map {
-                val sourceModel = db.sourcesDao().getSource(it.source).blockingGet()
+                val sourceEntity = db.sourcesDao().getSource(it.source).blockingGet()
                 val source = Source(
-                    sourceModel.id,
-                    sourceModel.name,
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
-                )
+                    id = sourceEntity.id,
+                    name = sourceEntity.name,
+                    description = sourceEntity.description,
+                    url = sourceEntity.url,
+                    category = sourceEntity.category,
+                    language = sourceEntity.language,
+                    country = sourceEntity.country)
                 Article(
                     id = System.currentTimeMillis(),
                     source = source,
@@ -70,7 +69,14 @@ constructor(private val db: AppDatabase) : ArticleSource {
     }
 
     override fun save(source: Source) {
-        val sourceModel = SourceEntity(source.id, source.name)
-        db.sourcesDao().save(sourceModel)
+        val sourceEntity = SourceEntity(
+            id = source.id,
+            name = source.name,
+            description = source.description,
+            url = source.url,
+            category = source.category,
+            language = source.language,
+            country = source.country)
+        db.sourcesDao().save(sourceEntity)
     }
 }

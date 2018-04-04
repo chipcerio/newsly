@@ -16,8 +16,16 @@ data class SourceEntity(
     @PrimaryKey
     val id: String,
 
-    val name: String
+    val name: String,
 
-) : Parcelable {
-    override fun toString(): String = "id:$id, name:$name"
-}
+    val description: String,
+
+    val url: String,
+
+    val category: String,
+
+    val language: String,
+
+    val country: String
+
+) : Parcelable

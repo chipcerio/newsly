@@ -18,7 +18,12 @@ class SourceDeserializer : JsonDeserializer<Source> {
         }
 
         val name = root.get("name").asString
+        val description = root.get("description").asString
+        val url = root.get("url").asString
+        val category = root.get("category").asString
+        val language = root.get("language").asString
+        val country = root.get("country").asString
 
-        return Source(id, name, "", "", "", "", "")
+        return Source(id, name, description, url, category, language, country)
     }
 }

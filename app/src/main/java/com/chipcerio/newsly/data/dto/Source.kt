@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @SuppressLint("ParcelCreator")
 @Parcelize
-data class Source(
+data class Source (
 
     val id: String,
 
@@ -20,6 +20,8 @@ data class Source(
 
     val language: String,
 
-    val country: String
+    val country: String,
+
+    var selected: Boolean = false
 
 ) : Parcelable

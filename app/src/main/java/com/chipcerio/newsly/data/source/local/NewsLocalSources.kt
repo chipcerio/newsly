@@ -18,18 +18,25 @@ constructor(private val db: AppDatabase) : NewsSources {
                 Source(
                     id = it.id,
                     name = it.name,
-                    description = "",
-                    url = "",
-                    category = "",
-                    language = "",
-                    country = "")
+                    description = it.description,
+                    url = it.url,
+                    category = it.category,
+                    language = it.language,
+                    country = it.country)
             }
             .toList()
             .toObservable()
     }
 
     override fun saveSource(source: Source) {
-        val sourceEntity = SourceEntity(source.id, source.name)
+        val sourceEntity = SourceEntity(
+            id = source.id,
+            name = source.name,
+            description = source.description,
+            url = source.url,
+            category = source.category,
+            language = source.language,
+            country = source.country)
         db.sourcesDao().save(sourceEntity)
     }
 }
