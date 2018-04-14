@@ -43,9 +43,12 @@ class ArticlesActivity : DaggerAppCompatActivity(), OnArticleClickListener, OnLo
         toolbarView.title = getString(R.string.app_name)
         setSupportActionBar(toolbarView)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ArticlesAdapter(mutableListOf(), this, this)
-        recyclerView.adapter = adapter
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@ArticlesActivity)
+            adapter = this@ArticlesActivity.adapter
+        }
 
         disposables = CompositeDisposable()
 

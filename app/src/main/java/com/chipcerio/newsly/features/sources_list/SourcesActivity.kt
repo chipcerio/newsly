@@ -30,9 +30,12 @@ class SourcesActivity : DaggerAppCompatActivity() {
         setSupportActionBar(toolbarView)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = SourcesAdapter(mutableListOf())
-        recyclerView.adapter = adapter
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@SourcesActivity)
+            adapter = this@SourcesActivity.adapter
+        }
     }
 
     override fun onStart() {
