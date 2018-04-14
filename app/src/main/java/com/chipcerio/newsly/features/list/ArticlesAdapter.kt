@@ -10,9 +10,10 @@ import com.chipcerio.newsly.data.dto.Article
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_article.*
 
-class ArticlesAdapter(private val articles: MutableList<Article>,
-                      private val onArticleClickListener: OnArticleClickListener,
-                      private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class ArticlesAdapter (
+    private val articles: MutableList<Article>,
+    private val onArticleClickListener: OnArticleClickListener,
+    private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(articles[position])
