@@ -42,6 +42,7 @@ NewsApiKey=<insert>
 This project follows the **official code style** from [kotlinlang.org](https://kotlinlang.org/docs/reference/coding-conventions.html) and [Android Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html). It uses [ktlint](https://ktlint.github.io/) for Kotlin linter
 
 ### TODO
+ * [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines.html)
  * surviving orientation change
  * more unit test cases
  * add more news sources
