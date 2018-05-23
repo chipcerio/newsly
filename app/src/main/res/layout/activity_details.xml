@@ -21,13 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/thumbnailView"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginEnd="16dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -47,9 +45,9 @@
             android:id="@+id/shareView"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:layout_gravity="right|center_vertical"
+            android:layout_gravity="end|center_vertical"
             android:background="?attr/selectableItemBackground"
-            android:contentDescription="@null"
+            android:contentDescription="@string/img_article"
             android:padding="10dp"
             app:srcCompat="?attr/actionModeShareDrawable" />
     </FrameLayout>
@@ -83,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:contentDescription="@string/up_navigation"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="16dp"
             app:srcCompat="@drawable/ic_arrow_back_white_24dp" />

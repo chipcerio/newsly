@@ -24,4 +24,3 @@ constructor(private val apiService: ApiService) : ArticleSource {
     override fun save(source: Source) {
     }
 }
-

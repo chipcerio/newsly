@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.item_article.*
 class ArticlesAdapter (
     private val articles: MutableList<Article>,
     private val onArticleClickListener: OnArticleClickListener,
-    private val onLoadItemsListener: OnLoadMoreItemsListener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+    private val onLoadItemsListener: OnLoadMoreItemsListener
+) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(articles[position])

@@ -72,6 +72,6 @@ public class FireBasePushIdGenerator {
             throw new AssertionError("Length should be 20.");
 
         return id;
-    };
+    }
 
 }

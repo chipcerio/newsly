@@ -20,5 +20,4 @@ class SourcesActivityModule {
     @Provides
     @Local
     fun providesNewsLocalSource(db: AppDatabase): NewsSources = NewsLocalSources(db)
-
 }

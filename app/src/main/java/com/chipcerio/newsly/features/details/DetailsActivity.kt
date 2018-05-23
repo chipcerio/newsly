@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_details.*
 class DetailsActivity : AppCompatActivity() {
 
     companion object {
-        val EXTRA_ARTICLE = "extras:article"
+        const val EXTRA_ARTICLE = "extras:article"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,7 +11,8 @@ import javax.inject.Inject
 class ArticlesRepository @Inject
 constructor(
     @Remote private val remote: ArticleSource,
-    @Local private val local: ArticleSource) : ArticleSource {
+    @Local private val local: ArticleSource
+) : ArticleSource {
 
     override fun getArticles(sources: List<String>, page: Int): Observable<List<Article>> {
         return remote.getArticles(sources, page)

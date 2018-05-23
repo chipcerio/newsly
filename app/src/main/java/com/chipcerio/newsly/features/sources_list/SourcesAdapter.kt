@@ -47,7 +47,6 @@ class SourcesAdapter(
                 source.selected = !source.selected
                 it.setBackgroundColor(if (source.selected) accent else Color.WHITE)
             }
-
         }
     }
 }
